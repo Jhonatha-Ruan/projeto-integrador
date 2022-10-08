@@ -3,20 +3,23 @@
 @session_start();
 
 //Por padrão todo usuario inicia deslogado
-if ($_SESSION["usuarioLogado"] == null) {
+if (!isset($_SESSION["usuarioLogado"])) {
     $_SESSION["usuarioLogado"] = false;
 }
-
-if ($_SESSION["prestadorLogado"] == null) {
-    $_SESSION["prestadorLogado"] = false;
+if (!isset($_SESSION["usuarioName"])) {
+    $_SESSION["usuarioName"] = false;
 }
 
-if ($_SESSION["prestadorName"] == null) {
+if (!isset($_SESSION["prestadorLogado"])) {
+    $_SESSION["prestadorLogado"] = false;
+}
+if (!isset($_SESSION["prestadorName"])) {
     $_SESSION["prestadorName"] = false;
 }
 
 //localhost/diogo/uec?pagina=3
 var_dump($_SESSION["usuarioLogado"]);
+var_dump($_SESSION["usuarioName"]);
 var_dump($_SESSION["prestadorLogado"]);
 var_dump($_SESSION["prestadorName"]);
 
@@ -27,11 +30,11 @@ $alert = ($_SERVER["REQUEST_METHOD"] == "GET" && !empty( $_GET['alert']) ) ? $_G
 $termoBusca = ($_SERVER["REQUEST_METHOD"] == "GET" && !empty( $_GET['termo']) ) ? $_GET['termo']: 0;
 
 if($pagina === '1'){
-    //Logado
+    // Usuario Logado
     include_once 'model/conexao.php';
     include_once 'model/usuario.php';
     include_once 'controller/usuario_controller.php';
-    include_once 'view/view_logado.php';
+    include_once 'view/view_usuarioLogado.php';
     
 }else if($pagina === '2'){
     //cadastro usuário
@@ -42,11 +45,11 @@ if($pagina === '1'){
     include_once "view/template/rodape.php";
 
 }else if($pagina === '3'){
-    //Logado Moto
+    //Prestador Logado
     include_once 'model/conexao.php';
     include_once 'model/prestador.php';
     include_once 'controller/prestador_controller.php';
-    include_once 'view/view_logado.php';
+    include_once 'view/view_prestadorLogado.php';
     
 }else if($pagina === '4'){                                                                                  
     //Edita de usuários

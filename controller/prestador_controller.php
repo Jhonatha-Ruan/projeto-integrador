@@ -24,6 +24,10 @@ $tela =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['tela']) ) ? $
 // $cadastro = new Prestador('jhonatha@gmail', '123', 'jhonatha', '20', 'preto', 'PEK6722', 'XJ6', '23334GDGFEFEF',);
 // $cadastro->cadastrar();
 
+// Barrar o prestador
+if(!Prestador::barrarPrestador()){
+    header('Location: http://localhost/motorapido/?erroNãoLogado');
+}
 
 // Verifica o Cadastro de Prestador
 if($tela == 'cadastroDePrestador'){

@@ -31,7 +31,7 @@
             <div class="row text-center text-md-start">
                 <div class="col-md-6 mt-3">
                    
-                    <h1 class="display-2 fw-bold">Logado</h1>
+                    <h1 class="display-2 fw-bold">Prestador de Serviços Logado</h1>
                     
                 </div>
 

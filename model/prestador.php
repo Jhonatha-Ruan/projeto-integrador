@@ -210,7 +210,7 @@ class Prestador
         $stmt->execute();
     }
 
-    public static function barrarUsuario() {
+    public static function barrarPrestador() {
         return ($_SESSION['prestadorLogado'] && !empty($_SESSION['prestadorLogado'])) ? true : false;
     }
 }

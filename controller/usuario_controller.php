@@ -36,6 +36,8 @@ if( $tela == 'loginDoUsuario' ){
     $usuarioObj = new Usuario($email, $senha);
     if( $usuarioObj->verificarLogin() ){
         $_SESSION["usuarioLogado"] = true;
+        $_SESSION["usuarioName"] = $usuarioObj->getEmail();
+
         header('Location: http://localhost/motorapido/?pagina=1');
     } else {
         header('Location: http://localhost/motorapido/?erroSenha');
