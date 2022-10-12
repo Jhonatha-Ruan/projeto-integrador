@@ -2,6 +2,7 @@
 @session_start();
 @include_once '../model/conexao.php';
 @include_once '../model/prestador.php';
+@include_once '../model/upload.php';
 
 
 $email = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['email']) )? $_POST['email'] : null; 
@@ -13,6 +14,7 @@ $placa = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['placa']) )? $_
 $modelo = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['modelo']) )? $_POST['modelo'] : null; 
 $chassi = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['chassi']) )? $_POST['chassi'] : null;
 $tela =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['tela']) ) ? $_POST['tela'] : null; 
+$imagem =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_FILES['arquivo']) ) ? $_FILES['arquivo'] : null; 
 
 
 // $usuarioObj = new Prestador(null, null, null, null, null, null, null, null);
@@ -23,6 +25,10 @@ $tela =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['tela']) ) ? $
 // var_dump($lista);
 // $cadastro = new Prestador('jhonatha@gmail', '123', 'jhonatha', '20', 'preto', 'PEK6722', 'XJ6', '23334GDGFEFEF',);
 // $cadastro->cadastrar();
+
+// $uploadObj = new Upload(null, null);
+// $list = $uploadObj->exibirTabela();
+
 
 // Barrar o prestador
 if(!Prestador::barrarPrestador()){
@@ -56,3 +62,17 @@ if($tela == 'loginDoPrestador'){
         header('Location: http://localhost/motorapido/?erroSenha');
     }
 }
+
+
+if($imagem) {
+    $uploadObj = new Upload($imagem);
+    $uploadObj->cadastrarImagem(); 
+    header('Location: http://localhost/motorapido/?cadastroTrue');
+     
+
+}
+
+$uploadObj = new Upload($imagem);
+$listaImagem = $uploadObj->exibirTabela();
+
+

@@ -48,6 +48,7 @@ if($pagina === '1'){
     //Prestador Logado
     include_once 'model/conexao.php';
     include_once 'model/prestador.php';
+    include_once 'model/upload.php';
     include_once 'controller/prestador_controller.php';
     include_once 'view/view_prestadorLogado.php';
     

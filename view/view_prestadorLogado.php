@@ -42,6 +42,36 @@
             </div>
         </section>
 
+        <section>
+            <form action="controller/prestador_controller.php" enctype="multipart/form-data" method="POST">
+                <input name="arquivo" type="file">
+                <input type="submit" value="Enviar">
+            </form>
+
+            <table class="table table-bordered border-dark table-striped" cellpadding="10">
+                <thead>
+                    <th>Id</th>
+                    <th>Preview</th>
+                    <th>Arquivo</th>
+                    <th>Data de Envio</th>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach($listaImagem as $img):
+                    ?>
+                    <tr>
+                        <td><?php echo $img['id']; ?></td>
+                        <td><img height="50" src="<?= $img['path']; ?>" alt="imagem"></td>
+                        <td><a target="_blank" href="<?= $img['path']; ?>"><?= $img['nome']; ?></a></td>
+                        <td><?= date("d/m/Y H:i", strtotime($img['data_upload'])); ?></td>
+                    </tr>
+                    <?php
+                    endforeach;
+                    ?>
+            </tbody>
+            </table>
+        </section>
+
         
     </div>    
 

@@ -229,71 +229,125 @@
               </div>
         </section>
 
-        <!-- Preços -->
+        <!-- Ranking -->
         <section id="precos" class="mt-5 py-5">
-            <div class="pricing-header pt-5 mt-5 text-center">
-                <h2 class="display-5 fw-bold">Ranking</h2>
-                <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+      <div class="pricing-header pt-5 mt-5 text-center">
+        <h2 class="display-5 fw-bold">Ranking</h2>
+        <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-white bg-primary border-primary">
+              <h4 class="my-0 fw-normal"> <i class="bi bi-trophy-fill"></i> Primeiro Lugar</h4>
             </div>
+            <div class="card-body">
 
-            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-
-                <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                      <div class="card-header py-3 text-white bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Primeiro Lugar</h4>
-                      </div>
-                      <div class="card-body">
-                        <h1 class="card-title pricing-card-title">Victor Motos</h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                          <li>Números de corridas: 90</li>
-                          <li>Pontualidade: Bom</li>
-                          
-                          <li>Avaliação <i class="star bi bi-star-fill"></i>4.8</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Chamar</button>
-                      </div>
-                    </div>
-                  </div> 
-
-                  <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                      <div class="card-header py-3 text-white bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Segundo Lugar</h4>
-                      </div>
-                      <div class="card-body">
-                        <h1 class="card-title pricing-card-title">Thiago Motos</h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                          <li>Números de corridas: 85</li>
-                          <li>Pontualidade: Bom</li>
-                          
-                          <li>Avaliação <i class="star bi bi-star-fill"></i>4.8</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Chamar</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                      <div class="card-header py-3 text-white bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Terceiro Lugar</h4>
-                      </div>
-                      <div class="card-body">
-                        <h1 class="card-title pricing-card-title">Taciara Motos</h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                          <li>Números de corridas: 50</li>
-                          <li>Pontualidade: Bom</li>
-                          
-                          <li>Avaliação <i class="star bi bi-star-fill"></i>4.8</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Chamar</button>
-                      </div>
-                    </div>
-                  </div>
-                
+              <div class="p-4 text-center w-100">
+                <img src="https://i.picsum.photos/id/629/200/300.jpg?hmac=YTSnJIQbXgJTOWUeXAqVeQYHZDodXXFFJxd5RTKs7yU" class="rounded-circle" style="width: 90px;" alt="Bootstrap 5 Extended Avatar">
               </div>
-        </section>   
+
+              <!-- <img src="https://i.picsum.photos/id/629/200/300.jpg?hmac=YTSnJIQbXgJTOWUeXAqVeQYHZDodXXFFJxd5RTKs7yU" class="rounded-circle" style="width: 150px;" alt="Bootstrap 5 Extended Avatar"> -->
+
+              <h1 class="card-title pricing-card-title">Victor Motos</h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Números de corridas: 90</li>
+                <li>Pontualidade: Bom</li>
+                <div class="container-rating">
+                  <div class="review-rating">
+                    <div class="left-review">
+                      <div class="review-title">Avaliação 3.5</div>
+                      <div class="review-star">
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star-half-o"></span>
+                        <span class="fa fa-star-o"></span>
+                      </div>
+                      <div class="review-people"><i class="fa fa-user"></i> 8,445,600 total</div>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-primary"> <i class="bi bi-whatsapp"></i> Chamar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-white bg-primary border-primary">
+              <h4 class="my-0 fw-normal"> <i class="fa-solid fa-medal"></i> Segundo Lugar</h4>
+            </div>
+            <div class="card-body">
+              <div class="p-4 text-center w-100">
+                <img src="https://i.picsum.photos/id/629/200/300.jpg?hmac=YTSnJIQbXgJTOWUeXAqVeQYHZDodXXFFJxd5RTKs7yU" class="rounded-circle" style="width: 90px;" alt="Bootstrap 5 Extended Avatar">
+              </div>
+              <h1 class="card-title pricing-card-title">Thiago Motos</h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Números de corridas: 85</li>
+                <li>Pontualidade: Bom</li>
+                <div class="container-rating">
+                  <div class="review-rating">
+                    <div class="left-review">
+                      <div class="review-title">Avaliação 3.5</div>
+                      <div class="review-star">
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star-half-o"></span>
+                        <span class="fa fa-star-o"></span>
+                      </div>
+                      <div class="review-people"><i class="fa fa-user"></i> 8,445,600 total</div>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+
+              <button type="button" class="w-100 btn btn-lg btn-primary"> <i class="bi bi-whatsapp"></i> Chamar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-white bg-primary border-primary">
+              <h4 class="my-0 fw-normal"> <i class="fa-solid fa-award"></i> Terceiro Lugar</h4>
+            </div>
+            <div class="card-body">
+              <div class="p-4 text-center w-100">
+                <img src="https://i.picsum.photos/id/629/200/300.jpg?hmac=YTSnJIQbXgJTOWUeXAqVeQYHZDodXXFFJxd5RTKs7yU" class="rounded-circle" style="width: 90px;" alt="Bootstrap 5 Extended Avatar">
+              </div>
+              <h1 class="card-title pricing-card-title">Taciara Motos</h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Números de corridas: 50</li>
+                <li>Pontualidade: Bom</li>
+                <div class="container-rating">
+                  <div class="review-rating">
+                    <div class="left-review">
+                      <div class="review-title">Avaliação 3.5</div>
+                      <div class="review-star">
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star-half-o"></span>
+                        <span class="fa fa-star-o"></span>
+                      </div>
+                      <div class="review-people"><i class="fa fa-user"></i> 8,445,600 total</div>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+
+              <button type="button" class="w-100 btn btn-lg btn-primary"> <i class="bi bi-whatsapp"></i> Chamar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
         <!-- FAQ -->
         <section id="faq" class="py-5 mt-5">
