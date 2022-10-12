@@ -33,6 +33,8 @@ if($pagina === '1'){
     // Usuario Logado
     include_once 'model/conexao.php';
     include_once 'model/usuario.php';
+    include_once 'model/upload.php';
+    include_once 'model/prestador.php';
     include_once 'controller/usuario_controller.php';
     include_once 'view/view_usuarioLogado.php';
     

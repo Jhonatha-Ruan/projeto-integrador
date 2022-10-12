@@ -42,6 +42,35 @@
             </div>
         </section>
 
+        <table class="table table-bordered border-dark table-striped" cellpadding="10">
+                <thead>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Número</th>
+                    <th>Modelo da Moto</th>
+                    <th>Cor da Moto</th>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach($listaPrestador as $list):
+                    ?>
+                    <tr>
+                        <td><?= $list['id']; ?></td>
+                        <td><?= $list['email']; ?></td>
+                        <td><a target="_blank" href="#"><?= $list['nome']; ?></a></td>
+                        <td><?= $list['idade']; ?></td>
+                        <td><?= $list['telefone']; ?></td>
+                        <td><?= $list['modelo']; ?></td>
+                        <td><?= $list['cor']; ?></td>
+                    </tr>
+                    <?php
+                    endforeach;
+                    ?>
+            </tbody>
+            </table>
+
         
     </div>    
 

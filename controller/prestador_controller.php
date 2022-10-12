@@ -9,6 +9,7 @@ $email = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['email']) )? $_
 $senha = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['senha']) )? $_POST['senha'] : null; 
 $nome = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['nome']) )? $_POST['nome'] : null; 
 $idade = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['idade']) )? $_POST['idade'] : null; 
+$telefone = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['telefone']) )? $_POST['telefone'] : null; 
 $cor = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['cor']) )? $_POST['cor'] : null; 
 $placa = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['placa']) )? $_POST['placa'] : null; 
 $modelo = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['modelo']) )? $_POST['modelo'] : null; 
@@ -37,7 +38,7 @@ if(!Prestador::barrarPrestador()){
 
 // Verifica o Cadastro de Prestador
 if($tela == 'cadastroDePrestador'){
-    $prestadorObj = new Prestador($email, $senha, $nome, $idade, $cor, $placa, $modelo, $chassi);
+    $prestadorObj = new Prestador($email, $senha, $nome, $idade, $telefone, $cor, $placa, $modelo, $chassi);
     $resultado = $prestadorObj->buscarPorEmail($prestadorObj->getEmail());
     //Se existir o email cadastrado no bd ele não deve ser gravado
     if($resultado){
@@ -53,7 +54,7 @@ if($tela == 'cadastroDePrestador'){
 
 // Verifica o login do Prestador
 if($tela == 'loginDoPrestador'){
-    $prestadorObj = new Prestador($email, $senha, $nome, null, null, null, null, null);
+    $prestadorObj = new Prestador($email, $senha, $nome, null, null, null, null, null, null);
     if($prestadorObj->verificarLogin()){
         $_SESSION["prestadorLogado"] = true;
         $_SESSION["prestadorName"] = $prestadorObj->getEmail();
@@ -69,7 +70,6 @@ if($imagem) {
     $uploadObj->cadastrarImagem(); 
     header('Location: http://localhost/motorapido/?cadastroTrue');
      
-
 }
 
 $uploadObj = new Upload($imagem);

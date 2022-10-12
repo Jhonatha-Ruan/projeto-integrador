@@ -154,7 +154,7 @@
                   </div>
             
                   <div class="modal-body p-5 pt-0">
-                    <form class="" action="controller/prestador_controller.php" method="post">
+                    <form action="controller/prestador_controller.php" method="post">
                       <div class="form-floating mb-3">
                         <input name="email" type="email" class="form-control rounded-3" id="floatingInput" >
                         <label for="floatingInput">Email</label>
@@ -170,6 +170,10 @@
                       <div class="form-floating mb-3">
                         <input name="idade" type="text" class="form-control rounded-3" id="floatingIdade" >
                         <label for="floatingInput">Sua Idade</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input name="telefone" type="text" maxlength="9" class="form-control rounded-3" id="floatingIdade" >
+                        <label for="floatingInput">Telefone</label>
                       </div>
                       <div class="form-floating mb-3">
                         <input name="cor" type="text" class="form-control rounded-3" id="floatingCor" >

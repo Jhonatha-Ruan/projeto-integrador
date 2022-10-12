@@ -7,6 +7,7 @@ class Prestador
     private $senha;
     private $nome;
     private $idade;
+    private $telefone;
     private $cor;
     private $placa;
     private $modelo;
@@ -14,11 +15,12 @@ class Prestador
     
 
     //Construtor
-    public function __construct($email, $senha, $nome, $idade, $cor, $placa, $modelo, $chassi) {
+    public function __construct($email, $senha, $nome, $idade, $telefone, $cor, $placa, $modelo, $chassi) {
         $this->setEmail($email);
         $this->setSenha($senha);
         $this->setNome($nome);
         $this->setIdade($idade);
+        $this->setTelefone($telefone);
         $this->setCor($cor);
         $this->setPlaca($placa);
         $this->setModelo($modelo);
@@ -42,6 +44,10 @@ class Prestador
     public function getIdade()
     {
         return $this->idade;
+    }
+    public function getTelefone()
+    {
+        return $this->telefone;
     }
     public function getCor()
     {
@@ -81,6 +87,10 @@ class Prestador
     public function setIdade($idade)
     {
         $this->idade = $idade;
+    }
+    public function setTelefone($telefone)
+    {
+        $this->telefone = $telefone;
     }
     public function setCor($cor)
     {
@@ -130,23 +140,24 @@ class Prestador
 
     public function listar(){
         $pdo = Database::conexao();
-        $sql = "SELECT * FROM prestador ORDER BY id DESC";
+        $sql = "SELECT * FROM prestador";
         $stmt = $pdo->prepare($sql);
-        $list = $stmt->execute();
-        $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $list;
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
     }
 
     public function cadastrar()
     {
-        $sql = "INSERT INTO prestador(email, senha, nome, idade, cor, placa, modelo, chassi) 
-        VALUES(:email, :senha, :nome, :idade, :cor, :placa, :modelo, :chassi)";
+        $sql = "INSERT INTO prestador(email, senha, nome, idade, telefone, cor, placa, modelo, chassi) 
+        VALUES(:email, :senha, :nome, :idade, :telefone, :cor, :placa, :modelo, :chassi)";
         $pdo = Database::conexao();
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':email', $this->getEmail());
         $stmt->bindValue(':senha', $this->getSenha());
         $stmt->bindValue(':nome', $this->getNome());
         $stmt->bindValue(':idade', $this->getIdade());
+        $stmt->bindValue(':telefone', $this->getTelefone());
         $stmt->bindValue(':cor', $this->getCor());
         $stmt->bindValue(':placa', $this->getPlaca());
         $stmt->bindValue(':modelo', $this->getModelo());
@@ -181,6 +192,7 @@ class Prestador
         senha = :senha,
         nome = :nome,
         idade = :idade,
+        telefone = :telefone,
         cor = :cor,
         placa = :placa,
         modelo = :modelo,
@@ -192,6 +204,7 @@ class Prestador
         $stmt->bindValue(':senha', $this->getSenha());
         $stmt->bindValue(':nome', $this->getNome());
         $stmt->bindValue(':idade', $this->getIdade());
+        $stmt->bindValue(':telefone', $this->getTelefone());
         $stmt->bindValue(':cor', $this->getCor());
         $stmt->bindValue(':placa', $this->getPlaca());
         $stmt->bindValue(':modelo', $this->getModelo());

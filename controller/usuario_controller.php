@@ -12,7 +12,7 @@ $BuscaUsuario =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['termo
 
 
 if(!Usuario::barrarUsuario()){
-    header('Location: http://localhost/motorapido');
+    header('Location: http://localhost/motorapido/?erroNãoLogado');
 }
 
 
@@ -75,3 +75,7 @@ if(!$tela){
         }
     }
 }
+
+
+$prestadorObj = new Prestador(null, null, null, null, null, null, null, null, null);
+$listaPrestador = $prestadorObj->listar();
