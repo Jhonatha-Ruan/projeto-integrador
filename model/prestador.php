@@ -1,6 +1,6 @@
 <?php
-
-class Prestador
+include_once('upload.php');
+class Prestador extends Upload
 {
     //Atributos
     private $email;
@@ -143,14 +143,22 @@ class Prestador
         $sql = "SELECT * FROM prestador";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);  
     }
+
+    public function listarJoin(){
+        $pdo = Database::conexao();
+        $sql = "SELECT prestador.nome, prestador.email, prestador.idade, prestador.telefone, prestador.cor, prestador.placa, prestador.modelo, arquivos.id, arquivos.path FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);  
+    }
+
 
     public function cadastrar()
     {
-        $sql = "INSERT INTO prestador(email, senha, nome, idade, telefone, cor, placa, modelo, chassi) 
-        VALUES(:email, :senha, :nome, :idade, :telefone, :cor, :placa, :modelo, :chassi)";
+        $sql = "INSERT INTO prestador(email, senha, nome, idade, telefone, cor, placa, modelo, chassi, id_imagem) 
+        VALUES(:email, :senha, :nome, :idade, :telefone, :cor, :placa, :modelo, :chassi, :id_imagem)";
         $pdo = Database::conexao();
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':email', $this->getEmail());
@@ -162,6 +170,7 @@ class Prestador
         $stmt->bindValue(':placa', $this->getPlaca());
         $stmt->bindValue(':modelo', $this->getModelo());
         $stmt->bindValue(':chassi', $this->getChassi());
+        $stmt->bindValue(':id_imagem', Upload::listarId()['0']['id']);
         $result = $stmt->execute();
         if ($result) {
             return true;

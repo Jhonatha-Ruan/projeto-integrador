@@ -78,4 +78,5 @@ if(!$tela){
 
 
 $prestadorObj = new Prestador(null, null, null, null, null, null, null, null, null);
-$listaPrestador = $prestadorObj->listar();
+$listaPrestador = $prestadorObj->listarJoin();
+

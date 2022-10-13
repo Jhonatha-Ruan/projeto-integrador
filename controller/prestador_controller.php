@@ -15,7 +15,7 @@ $placa = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['placa']) )? $_
 $modelo = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['modelo']) )? $_POST['modelo'] : null; 
 $chassi = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['chassi']) )? $_POST['chassi'] : null;
 $tela =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['tela']) ) ? $_POST['tela'] : null; 
-$imagem =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_FILES['arquivo']) ) ? $_FILES['arquivo'] : null; 
+$imagem =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_FILES['idImagem']) ) ? $_FILES['idImagem'] : null; 
 
 
 // $usuarioObj = new Prestador(null, null, null, null, null, null, null, null);
@@ -32,12 +32,17 @@ $imagem =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_FILES['arquivo'])
 
 
 // Barrar o prestador
-if(!Prestador::barrarPrestador()){
-    header('Location: http://localhost/motorapido/?erroNãoLogado');
-}
+// if(!Prestador::barrarPrestador()){
+//     header('Location: http://localhost/motorapido/?erroNãoLogado');
+// }
+
 
 // Verifica o Cadastro de Prestador
 if($tela == 'cadastroDePrestador'){
+    if($imagem) {
+        $uploadObj = new Upload($imagem);
+        $uploadObj->cadastrarImagem();   
+    }
     $prestadorObj = new Prestador($email, $senha, $nome, $idade, $telefone, $cor, $placa, $modelo, $chassi);
     $resultado = $prestadorObj->buscarPorEmail($prestadorObj->getEmail());
     //Se existir o email cadastrado no bd ele não deve ser gravado
@@ -65,12 +70,6 @@ if($tela == 'loginDoPrestador'){
 }
 
 
-if($imagem) {
-    $uploadObj = new Upload($imagem);
-    $uploadObj->cadastrarImagem(); 
-    header('Location: http://localhost/motorapido/?cadastroTrue');
-     
-}
 
 $uploadObj = new Upload($imagem);
 $listaImagem = $uploadObj->exibirTabela();

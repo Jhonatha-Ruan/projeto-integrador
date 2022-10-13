@@ -1,4 +1,22 @@
-.star {
-    color: rgb(255, 255, 0);
-    font-size: small;
+#formFile{
+    display: none;
+}
+
+#fileInput label {
+    padding: 20px 10px;
+    width: 400px;
+    background-color: white;
+    color: #6f7275;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+}
+
+#fileInput label:hover {
+    color: whitesmoke;
+    background-color: rgb(122, 122, 122);
 }

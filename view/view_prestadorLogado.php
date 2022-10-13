@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
+    <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Icons -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/07277f6fe9.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="assets/img/veterinario.png" type="image/x-icon">
     <title>Moto Rápido</title>
 </head>
 <body class="bg-light" data-bs-spy="scroll" data-bs-target="#menu">
@@ -43,11 +45,6 @@
         </section>
 
         <section>
-            <form action="controller/prestador_controller.php" enctype="multipart/form-data" method="POST">
-                <input name="arquivo" type="file">
-                <input type="submit" value="Enviar">
-            </form>
-
             <table class="table table-bordered border-dark table-striped" cellpadding="10">
                 <thead>
                     <th>Id</th>
@@ -61,7 +58,7 @@
                     ?>
                     <tr>
                         <td><?php echo $img['id']; ?></td>
-                        <td><img height="50" src="<?= $img['path']; ?>" alt="imagem"></td>
+                        <td><img height="50" src="<?= $img['path']; ?>" alt="perfil"></td>
                         <td><a target="_blank" href="<?= $img['path']; ?>"><?= $img['nome']; ?></a></td>
                         <td><?= date("d/m/Y H:i", strtotime($img['data_upload'])); ?></td>
                     </tr>

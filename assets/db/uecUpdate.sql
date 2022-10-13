@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11-Out-2022 às 02:05
--- Versão do servidor: 10.4.21-MariaDB
--- versão do PHP: 8.0.11
+-- Tempo de geração: 13-Out-2022 às 21:46
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,9 +39,8 @@ CREATE TABLE `arquivos` (
 --
 
 INSERT INTO `arquivos` (`id`, `nome`, `path`, `data_upload`) VALUES
-(39, 'ete.jpg', 'assets/arquivos/63449fd33b89c.jpg', '2022-10-10 19:42:27'),
-(40, 'icon.png', 'assets/arquivos/', '2022-10-10 20:45:44'),
-(41, 'icon.png', 'assets/arquivos/6344aecf3d728.png', '2022-10-10 20:46:23');
+(44, 'elon-musk.jpg', 'assets/arquivos/63477bab947bb.jpg', '2022-10-12 23:44:59'),
+(45, 'mark-zuckerberg.jpg', 'assets/arquivos/63477bfcbd480.jpg', '2022-10-12 23:46:20');
 
 -- --------------------------------------------------------
 
@@ -93,10 +92,12 @@ CREATE TABLE `prestador` (
   `senha` varchar(100) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `idade` int(11) NOT NULL,
+  `telefone` int(9) NOT NULL,
   `cor` varchar(100) NOT NULL,
-  `placa` int(11) NOT NULL,
+  `placa` varchar(100) NOT NULL,
   `modelo` varchar(100) NOT NULL,
   `chassi` varchar(100) NOT NULL,
+  `data` datetime NOT NULL DEFAULT current_timestamp(),
   `id_imagem` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -104,9 +105,9 @@ CREATE TABLE `prestador` (
 -- Extraindo dados da tabela `prestador`
 --
 
-INSERT INTO `prestador` (`id`, `email`, `senha`, `nome`, `idade`, `cor`, `placa`, `modelo`, `chassi`, `id_imagem`) VALUES
-(1, 'jhonatha@gmail', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'jhonatha', 20, 'preto', 0, 'XJ6', '23334GDGFEFEF', 39),
-(2, 'adm@teste.com.br', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Jhou', 20, 'preto', 0, 'XJ6', 'SHDJHHJ3434', 41);
+INSERT INTO `prestador` (`id`, `email`, `senha`, `nome`, `idade`, `telefone`, `cor`, `placa`, `modelo`, `chassi`, `data`, `id_imagem`) VALUES
+(1, 'jhonatha@gmail', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'jhonatha', 20, 981562343, 'preto', 'JUE7823', 'XJ6', '23334GDGFEFEF', '2022-10-12 18:22:41', 44),
+(2, 'adm@teste.com.br', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'adm', 20, 981556732, 'preto', 'JDS1230', 'XJ6', 'SHDJHHJ3434', '2022-10-12 18:22:41', 45);
 
 -- --------------------------------------------------------
 
@@ -117,22 +118,24 @@ INSERT INTO `prestador` (`id`, `email`, `senha`, `nome`, `idade`, `cor`, `placa`
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `senha` varchar(50) NOT NULL
+  `senha` varchar(50) NOT NULL,
+  `data` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `email`, `senha`) VALUES
-(1, 'micael2@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
-(2, 'lucas.rqoliveira25@gmail.com', 'db00e4fdc8a6d8fc749a23649c9ec9343051ec47'),
-(3, 'millenamarques113@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18'),
-(4, 'Jesielluiz15@gmailcom', 'fc1200c7a7aa52109d762a9f005b149abef01479'),
-(5, 'ayslaneclarise@gmail.com', '8abcda2dba9a5c5c674e659333828582122c5f56'),
-(6, 'email5@email.com', '343ae8e26ca054cfcc1f6cbfe5781dddc9059adc'),
-(7, 'exemplo@gmail.com', 'c4b5c86bd577da3d93fea7c89cba61c78b48e589'),
-(8, 'jhonatha@gmail', '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+INSERT INTO `usuario` (`id`, `email`, `senha`, `data`) VALUES
+(1, 'micael2@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2022-10-12 18:53:40'),
+(2, 'lucas.rqoliveira25@gmail.com', 'db00e4fdc8a6d8fc749a23649c9ec9343051ec47', '2022-10-12 18:53:40'),
+(3, 'millenamarques113@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', '2022-10-12 18:53:40'),
+(4, 'Jesielluiz15@gmailcom', 'fc1200c7a7aa52109d762a9f005b149abef01479', '2022-10-12 18:53:40'),
+(5, 'ayslaneclarise@gmail.com', '8abcda2dba9a5c5c674e659333828582122c5f56', '2022-10-12 18:53:40'),
+(6, 'email5@email.com', '343ae8e26ca054cfcc1f6cbfe5781dddc9059adc', '2022-10-12 18:53:40'),
+(7, 'exemplo@gmail.com', 'c4b5c86bd577da3d93fea7c89cba61c78b48e589', '2022-10-12 18:53:40'),
+(8, 'jhonatha@gmail', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2022-10-12 18:53:40'),
+(9, 'jrlmdivulgar@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2022-10-12 18:53:40');
 
 --
 -- Índices para tabelas despejadas
@@ -155,7 +158,7 @@ ALTER TABLE `lutador`
 --
 ALTER TABLE `prestador`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_ID_IMAGEM` (`id_imagem`);
+  ADD KEY `id_imagem` (`id_imagem`);
 
 --
 -- Índices para tabela `usuario`
@@ -171,7 +174,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `arquivos`
 --
 ALTER TABLE `arquivos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de tabela `lutador`
@@ -183,13 +186,13 @@ ALTER TABLE `lutador`
 -- AUTO_INCREMENT de tabela `prestador`
 --
 ALTER TABLE `prestador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restrições para despejos de tabelas
@@ -199,7 +202,8 @@ ALTER TABLE `usuario`
 -- Limitadores para a tabela `prestador`
 --
 ALTER TABLE `prestador`
-  ADD CONSTRAINT `FK_ID_IMAGEM` FOREIGN KEY (`id_imagem`) REFERENCES `arquivos` (`id`);
+  ADD CONSTRAINT `FK_ID_IMAGEM` FOREIGN KEY (`id_imagem`) REFERENCES `arquivos` (`id`),
+  ADD CONSTRAINT `prestador_ibfk_1` FOREIGN KEY (`id_imagem`) REFERENCES `arquivos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
