@@ -25,14 +25,61 @@
       </a>
 
       <ul id="menu" class="nav nav-pills">
-
         <li class="nav-item"><a href="#entrar" class="nav-link active" aria-current="page" data-bs-toggle="modal" data-bs-target="#loginModal">Entrar</a></li>
         <li class="nav-item"><a href="#cadastre" class="nav-link" aria-current="page" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastre-se</a></li>
         <li class="nav-item"><a href="#" class="nav-link" aria-current="page" data-bs-toggle="modal" data-bs-target="#cadastroModalMoto">Seja um prestador de Serviços</a></li>
-
       </ul>
     </header>
-
+    <?php
+      if (isset($_GET["cadastro"]) && $_GET["cadastro"] == "sucesso") {
+        echo '
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          <strong>Cadastrado</strong> com sucesso, agora faça o login para entrar.
+        </div>
+        ';
+      }     
+    ?>
+    <?php
+      if (isset($_GET["cadastro"]) && $_GET["cadastro"] == "usuarioExiste") {
+        echo '
+        <div class="alert alert-warning alert-dismissible">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          <strong>Email Já Cadastrado</strong> Atenção este email já está cadastrado.
+        </div>
+        ';
+      }     
+    ?>
+    <?php
+      if (isset($_GET["cadastro"]) && $_GET["cadastro"] == "erro") {
+        echo '
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          <strong>Erro</strong> Algo deu errado.
+        </div>
+        ';
+      }     
+    ?>
+    <?php
+      if (isset($_GET["erro"]) && $_GET["erro"] == "senhaInválida") {
+        echo '
+        <div class="alert alert-warning alert-dismissible">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          <strong>Atenção</strong> Email ou senha está incorreto, verifique e tente novamente.
+        </div>
+        ';
+      }     
+    ?>
+    <?php
+      if (isset($_GET["erro"]) && $_GET["erro"] == "nãoLogado") {
+        echo '
+        <div class="alert alert-warning alert-dismissible">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          <strong>Atenção</strong> Você não pode acessar outras páginas sem estar logado.
+        </div>
+        ';
+      }     
+    ?>
     <section id="home" class="mb-5">
       <div class="row text-center text-md-start">
         <div class="col-md-6 mt-3">
@@ -63,11 +110,11 @@
             <div class="modal-body p-5 pt-0">
               <form action="controller/usuario_controller.php" method="post">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" name="email">
+                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" name="email" required>
                   <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" name="senha">
+                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" name="senha" required>
                   <label for="floatingPassword">Senha</label>
                 </div>
                 <input name="tela" type="hidden" value="loginDoUsuario">
@@ -96,11 +143,11 @@
             <div class="modal-body p-5 pt-0">
               <form action="controller/prestador_controller.php" method="post">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control rounded-3" id="floatingInput" name="email">
+                  <input type="email" class="form-control rounded-3" id="floatingInput" name="email" required>
                   <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control rounded-3" id="floatingPassword" name="senha">
+                  <input type="password" class="form-control rounded-3" id="floatingPassword" name="senha" required>
                   <label for="floatingPassword">Senha</label>
                 </div>
                 <input name="tela" type="hidden" value="loginDoPrestador">
@@ -127,11 +174,11 @@
             <div class="modal-body p-5 pt-0">
               <form class="" action="controller/usuario_controller.php" method="post">
                 <div class="form-floating mb-3">
-                  <input name="email" type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                  <input name="email" type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required>
                   <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input name="senha" type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                  <input name="senha" type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" required>
                   <label for="floatingPassword">Senha</label>
                 </div>
                 <input name="tela" type="hidden" value="cadastroDeUsuario">
@@ -160,43 +207,43 @@
             <div class="modal-body p-5 pt-0">
               <form action="controller/prestador_controller.php" enctype="multipart/form-data" method="post">
                 <div class="form-floating mb-3">
-                  <input name="email" type="email" class="form-control rounded-3" id="floatingInput" require>
+                  <input name="email" type="email" class="form-control rounded-3" id="floatingInput" required>
                   <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input name="senha" type="password" class="form-control rounded-3" id="floatingPassword" require>
+                  <input name="senha" type="password" class="form-control rounded-3" id="floatingPassword" required>
                   <label for="floatingPassword">Senha</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input name="nome" type="text" class="form-control rounded-3" id="floatingNome" require>
+                  <input name="nome" type="text" class="form-control rounded-3" id="floatingNome" required>
                   <label for="floatingInput">Seu Nome</label>
                 </div>
                 <div id="fileInput" >
-                  <input name="idImagem" type="file" id="formFile" require>
+                  <input name="idImagem" type="file" id="formFile" required>
                   <label for="formFile" class="form-label">Foto de Perfil</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input name="idade" type="text" class="form-control rounded-3" id="floatingIdade" require>
+                  <input name="idade" type="text" class="form-control rounded-3" id="floatingIdade" required>
                   <label for="floatingInput">Sua Idade</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input name="telefone" type="text" maxlength="9" class="form-control rounded-3" id="floatingIdade" require>
+                  <input name="telefone" type="text" maxlength="9" class="form-control rounded-3" id="floatingIdade" required>
                   <label for="floatingInput">Telefone</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input name="cor" type="text" class="form-control rounded-3" id="floatingCor" require>
+                  <input name="cor" type="text" class="form-control rounded-3" id="floatingCor" required>
                   <label for="floatingInput">Cor da Moto</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input name="placa" type="text" class="form-control rounded-3" id="floatingPlaca" require>
+                  <input name="placa" type="text" class="form-control rounded-3" id="floatingPlaca" required>
                   <label for="floatingInput">Placa da Moto</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input name="modelo" type="text" class="form-control rounded-3" id="floatingModelo" require>
+                  <input name="modelo" type="text" class="form-control rounded-3" id="floatingModelo" required>
                   <label for="floatingInput">Modelo da Moto</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input name="chassi" type="text" class="form-control rounded-3" id="floatingChassi" require>
+                  <input name="chassi" type="text" class="form-control rounded-3" id="floatingChassi" required>
                   <label for="floatingInput">Chassi da Moto</label>
                 </div>
                 <input name="tela" type="hidden" value="cadastroDePrestador">

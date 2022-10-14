@@ -25,7 +25,7 @@
       
             <ul id="menu" class="nav nav-pills">
                 <span class="fs-5 pe-4">Bem-Vindo <?=$_SESSION["usuarioName"]?> </span>  
-                <li class="nav-item"><a href="logoff.php" class="nav-link active" >Sair</a></li>    
+                <li class="nav-item"><a href="controller/usuario_controller.php/?sair=true" class="nav-link active" >Sair</a></li>    
             </ul>
         </header>
 

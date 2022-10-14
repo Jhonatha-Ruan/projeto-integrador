@@ -17,11 +17,15 @@ if (!isset($_SESSION["prestadorName"])) {
     $_SESSION["prestadorName"] = false;
 }
 
+if (!isset($_GET["sair"])) {
+    $_GET["sair"] = false;
+}
 //localhost/diogo/uec?pagina=3
 var_dump($_SESSION["usuarioLogado"]);
 var_dump($_SESSION["usuarioName"]);
 var_dump($_SESSION["prestadorLogado"]);
 var_dump($_SESSION["prestadorName"]);
+
 
 //Operador ternario
 $pagina = ($_SERVER["REQUEST_METHOD"] == "GET" && !empty( $_GET['pagina']) ) ? $_GET['pagina'] : 999 ;

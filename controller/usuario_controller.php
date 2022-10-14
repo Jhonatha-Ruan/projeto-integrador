@@ -12,21 +12,25 @@ $BuscaUsuario =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['termo
 
 
 if(!Usuario::barrarUsuario()){
-    header('Location: http://localhost/motorapido/?erroNãoLogado');
+    header('Location: http://localhost/motorapido/?erro=nãoLogado');
 }
 
+if($_GET['sair']){
+    session_destroy();
+    header('Location: http://localhost/motorapido/?saiu');
+}
 
 if($tela == 'cadastroDeUsuario'){
     $usuarioObj = new Usuario($email, $senha);
     $resultado = $usuarioObj->buscarPorEmail( $usuarioObj->getEmail() );
     //Se existir o email cadastrado no bd ele não deve ser gravado
     if( $resultado ){
-        header('Location: http://localhost/motorapido/?erro');
+        header('Location: http://localhost/motorapido/?cadastro=usuarioExiste');
     } else {
         if($usuarioObj->cadastrar()){
-            header('Location: http://localhost/motorapido/?sucesso');
+            header('Location: http://localhost/motorapido/?cadastro=sucesso');
         }else{
-            header('Location: http://localhost/motorapido/?erro3');
+            header('Location: http://localhost/motorapido/?cadastro=erro');
         }
     }
 }
@@ -40,7 +44,7 @@ if( $tela == 'loginDoUsuario' ){
 
         header('Location: http://localhost/motorapido/?pagina=1');
     } else {
-        header('Location: http://localhost/motorapido/?erroSenha');
+        header('Location: http://localhost/motorapido/?erro=senhaInválida');
     }
 }
 
