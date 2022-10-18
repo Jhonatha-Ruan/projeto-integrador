@@ -61,11 +61,11 @@
                     ?>
                     <tr>
                         <td><?= $list['id']; ?></td>
-                        <td><img height="50" src="<?= $list['path']; ?>" alt="perfil"></td>
+                        <td><a target="_blank" href="<?= $list['path']; ?>"><img height="50" src="<?= $list['path']; ?>" alt="perfil"></a></td>
                         <td><a target="_blank" href="<?= $list['path']; ?>"><?= $list['nome']; ?></a></td>
                         <td><?= $list['email']; ?></td>
                         <td><?= $list['idade']; ?></td>
-                        <td><?= $list['telefone']; ?></td>
+                        <td><a href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank"><?= $list['telefone']; ?></a></td>
                         <td><?= $list['modelo']; ?></td>
                         <td><?= $list['cor']; ?></td>
                     </tr>
