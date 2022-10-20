@@ -20,3 +20,19 @@
     color: whitesmoke;
     background-color: rgb(122, 122, 122);
 }
+
+th, td {
+    align-items: flex-end;
+    padding: 10px 20px;
+
+} 
+
+td img {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #aaaaaa;
+}
+
+

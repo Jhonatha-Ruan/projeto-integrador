@@ -80,7 +80,13 @@ if(!$tela){
     }
 }
 
+if($_GET['page'] == 0){
+    header('Location: http://localhost/motorapido/?pagina=1&page=1');
+}
 
 $prestadorObj = new Prestador(null, null, null, null, null, null, null, null, null);
 $listaPrestador = $prestadorObj->listarJoin();
+$pages = $prestadorObj->countId();
+
+
 

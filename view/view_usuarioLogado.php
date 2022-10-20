@@ -44,36 +44,50 @@
             </div>
         </section>
 
-        <table class="table table-bordered border-dark table-striped" cellpadding="10">
-                <thead>
-                    <th>Id</th>
-                    <th>Foto de Perfil</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Idade</th>
-                    <th>Número</th>
-                    <th>Modelo da Moto</th>
-                    <th>Cor da Moto</th>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach($listaPrestador as $list):
-                    ?>
-                    <tr>
-                        <td><?= $list['id']; ?></td>
-                        <td><a target="_blank" href="<?= $list['path']; ?>"><img height="50" src="<?= $list['path']; ?>" alt="perfil"></a></td>
-                        <td><a target="_blank" href="<?= $list['path']; ?>"><?= $list['nome']; ?></a></td>
-                        <td><?= $list['email']; ?></td>
-                        <td><?= $list['idade']; ?></td>
-                        <td><a href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank"><?= $list['telefone']; ?></a></td>
-                        <td><?= $list['modelo']; ?></td>
-                        <td><?= $list['cor']; ?></td>
-                    </tr>
-                    <?php
-                    endforeach;
-                    ?>
-            </tbody>
+        <!-- Tabela -->
+        <section>
+            <table class="table table-striped">
+                    <thead>
+                        <th>Id</th>
+                        <th>Foto de Perfil</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Idade</th>
+                        <th>Número</th>
+                        <th>Modelo da Moto</th>
+                        <th>Cor da Moto</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach($listaPrestador as $list):
+                        ?>
+                        <tr>
+                            <td><?= $list['id']; ?></td>
+                            <td><a target="_blank" href="<?= $list['path']; ?>"><img src="<?= $list['path']; ?>" alt="perfil"></a></td>
+                            <td><a target="_blank" href="<?= $list['path']; ?>"><?= $list['nome']; ?></a></td>
+                            <td><?= $list['email']; ?></td>
+                            <td><?= $list['idade']; ?></td>
+                            <td><a href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank"><?= $list['telefone']; ?></a></td>
+                            <td><?= $list['modelo']; ?></td>
+                            <td><?= $list['cor']; ?></td>
+                        </tr>
+                        <?php
+                        endforeach;
+                        ?>
+                </tbody>
             </table>
+
+            <nav class="d-flex justify-content-center">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="http://localhost/motorapido/?pagina=1&page=<?= $_GET['page'] - 1; ?>">Anterior</a></li>
+                    <?php for($i = 1; $i<= $pages; $i++) : ?>
+                        <li class="page-item"><a class="page-link" href="http://localhost/motorapido/?pagina=1&page=<?= $i; ?>"><?= $i; ?></a></li>   
+                    <?php endfor; ?>              
+                    <li class="page-item"><a class="page-link" href="http://localhost/motorapido/?pagina=1&page=<?= $_GET['page'] + 1; ?>">Próximo</a></li>
+                </ul>
+            </nav>
+        </section>
+        
 
         
     </div>    

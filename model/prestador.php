@@ -147,11 +147,26 @@ class Prestador extends Upload
     }
 
     public function listarJoin(){
+        $limit = 20;
+        $page = $_GET['page'];
+        $start = ($page - 1) * $limit;
         $pdo = Database::conexao();
-        $sql = "SELECT prestador.nome, prestador.email, prestador.idade, prestador.telefone, prestador.cor, prestador.placa, prestador.modelo, arquivos.id, arquivos.path FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem";
+        $sql = "SELECT prestador.nome, prestador.email, prestador.idade, prestador.telefone, prestador.cor, prestador.placa, prestador.modelo, arquivos.id, arquivos.path FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem LIMIT $start, $limit";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);  
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        
+    }
+
+    public function countId() {
+        $limit = 20;
+        $pdo = Database::conexao();
+        $sql = "SELECT COUNT(id) AS id FROM prestador";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $prestadorCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $total = $prestadorCount[0]['id'];
+        return ceil($total / $limit);
     }
 
 

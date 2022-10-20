@@ -20,6 +20,10 @@ if (!isset($_SESSION["prestadorName"])) {
 if (!isset($_GET["sair"])) {
     $_GET["sair"] = false;
 }
+if (!isset($_GET["page"])) {
+    $_GET["page"] = $_GET['page'];
+}
+
 //localhost/diogo/uec?pagina=3
 var_dump($_SESSION["usuarioLogado"]);
 var_dump($_SESSION["usuarioName"]);
