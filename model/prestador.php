@@ -147,7 +147,7 @@ class Prestador extends Upload
     }
 
     public function listarJoin(){
-        $limit = 20;
+        $limit = 10;
         $page = $_GET['page'];
         $start = ($page - 1) * $limit;
         $pdo = Database::conexao();
@@ -159,7 +159,7 @@ class Prestador extends Upload
     }
 
     public function countId() {
-        $limit = 20;
+        $limit = 10;
         $pdo = Database::conexao();
         $sql = "SELECT COUNT(id) AS id FROM prestador";
         $stmt = $pdo->prepare($sql);

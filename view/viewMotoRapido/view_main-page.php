@@ -360,7 +360,7 @@
 
               <h3 class="card-title pricing-card-title">Victor Motos</h3>
               <ul class="list-unstyled mt-3 mb-4">
-                <li>Números de corridas: 25</li>
+                <li>Corridas Realizada: 25</li>
                 <!-- <li>Pontualidade: Bom</li> -->
                 <!-- <div class="container-rating">
                   <div class="review-rating">
@@ -394,7 +394,7 @@
               </div>
               <h3 class="card-title pricing-card-title">Thiago Motos</h3>
               <ul class="list-unstyled mt-3 mb-4">
-                <li>Números de corridas: 19</li>
+                <li>Corridas Realizada: 19</li>
                 <!-- <li>Pontualidade: Bom</li>
                 <div class="container-rating">
                   <div class="review-rating">
@@ -429,7 +429,7 @@
               </div>
               <h3 class="card-title pricing-card-title">Taciara Motos</h3>
               <ul class="list-unstyled mt-3 mb-4">
-                <li>Números de corridas: 10</li>
+                <li>Corridas Realizada: 10</li>
                 <!-- <li>Pontualidade: Bom</li>
                 <div class="container-rating">
                   <div class="review-rating">
@@ -535,14 +535,4 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-3 mt-5">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#servicos" class="nav-link px-2 text-muted">Serviços</a></li>
-        <li class="nav-item"><a href="#vantagens" class="nav-link px-2 text-muted">Vantagens</a></li>
-        <li class="nav-item"><a href="#precos" class="nav-link px-2 text-muted">Ranking</a></li>
-        <li class="nav-item"><a href="#contatos" class="nav-link px-2 text-muted">Contatos</a></li>
-      </ul>
-      <p class="text-center text-muted">© 2022 <i class="fa-solid fa-motorcycle"></i> Moto Rápido — Website de Viagens, Inc</p>
-    </footer>
+   
