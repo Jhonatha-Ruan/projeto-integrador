@@ -41,8 +41,9 @@
                         <th>Cor da Moto</th>
                         <th>Placa</th>
                         <th>Chassi</th>
+                        <th>Viagens Realizadas</th>
                         <th>Número</th>
-                        <th>Ações</th>
+                        <th>Editar</th>
                     </thead>
                     <tbody>
                         <?php
@@ -58,6 +59,7 @@
                             <td><?= $list['cor']; ?></td>
                             <td><?= $list['placa']; ?></td>
                             <td><?= $list['chassi']; ?></td>
+                            <td><?= $list['viagens']; ?></td>
                             <td><a class="nav-link" href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank"><?= $list['telefone']; ?></a></td>
                             <td><a href="#" class="btn btn-primary p-2" aria-current="page" data-bs-toggle="modal" data-bs-target="#updateModalMoto"><i class="bi bi-pencil"></i></a></td>
 

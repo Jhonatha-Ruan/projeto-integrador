@@ -160,7 +160,7 @@ class Prestador extends Upload
         $page = $_GET['page'];
         $start = ($page - 1) * $limit;
         $pdo = Database::conexao();
-        $sql = "SELECT prestador.nome, prestador.email, prestador.idade, prestador.telefone, prestador.viagens, prestador.cor, prestador.placa, prestador.modelo, arquivos.id, arquivos.path FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem LIMIT $start, $limit";
+        $sql = "SELECT prestador.nome, prestador.email, prestador.idade, prestador.telefone, prestador.viagens, prestador.cor, prestador.placa, prestador.modelo, arquivos.id, arquivos.path FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem ORDER BY `prestador`.`viagens` DESC LIMIT $start, $limit";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC); 
@@ -196,6 +196,22 @@ class Prestador extends Upload
         $stmt->bindValue(':modelo', $this->getModelo());
         $stmt->bindValue(':chassi', $this->getChassi());
         $stmt->bindValue(':id_imagem', Upload::listarId()['0']['id']);
+        $result = $stmt->execute();
+        if ($result) {
+            return true;
+        }else{
+           return false; 
+           
+        }
+    }
+
+    public function addViagem($ViagemTot, $email)
+    {  
+        $sql = "UPDATE `prestador` SET `viagens` = :viagens WHERE `prestador`.`email` = :email";
+        $pdo = Database::conexao();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':viagens', $ViagemTot + 1);     
+        $stmt->bindValue(':email', $email);     
         $result = $stmt->execute();
         if ($result) {
             return true;

@@ -17,6 +17,7 @@ $chassi = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['chassi']) )? 
 $tela =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['tela']) ) ? $_POST['tela'] : null; 
 $emailOriginal =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['emailOriginal']) ) ? $_POST['emailOriginal'] : null; 
 $imagem =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_FILES['idImagem']) ) ? $_FILES['idImagem'] : null; 
+$chave = ($_SERVER["REQUEST_METHOD"] == "GET" && !empty( $_GET['chave']) ) ? $_GET['chave']: null;
 
 
 // $usuarioObj = new Prestador(null, null, null, null, null, null, null, null);
@@ -33,9 +34,9 @@ $imagem =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_FILES['idImagem']
 
 
 // Barrar o prestador
-if(!Prestador::barrarPrestador()){
-    header('Location: http://localhost/motorapido/?erro=nãoLogado');
-}
+// if(!Prestador::barrarPrestador()){
+//     header('Location: http://localhost/motorapido/?erro=nãoLogado');
+// }
 
 if($_GET['sair']){
     session_destroy();
@@ -43,8 +44,12 @@ if($_GET['sair']){
 }
 
 if($_GET['addViagem']){
-    header('Location: http://localhost/motorapido/?pagina=1&DEUCERTO');
+    $prestadorObj = new Prestador(null, null, null, null, null, null, null, null, null, null);
+    $lista = $prestadorObj->buscarPorEmail($chave);
+    $prestadorObj->addViagem($lista[0]['viagens'], $chave);
+    header('Location: http://localhost/motorapido/?pagina=1&ViagemAddCerto');
 }
+
 
 // Verifica o Cadastro de Prestador
 if($tela == 'cadastroDePrestador'){

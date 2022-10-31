@@ -63,30 +63,32 @@
             </div>
             <table class="table table-striped align-middle">
                     <thead>
-                        <th>Id</th>
+                        <th>Posição</th>
                         <th>Foto de Perfil</th>
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Idade</th>
                         <th>Modelo da Moto</th>
                         <th>Cor da Moto</th>
+                        <th>Viagens Realizadas</th>
                         <th>Número</th>
                         <th>WhatsApp</th>
                     </thead>
                     <tbody>
                         <?php
-                        foreach($listaPrestador as $list):
+                        foreach($listaPrestador as $index => $list):
                         ?>
                         <tr>
-                            <td><?= $list['id']; ?></td>
+                            <td><?= $index + 1 ?></td>
                             <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal<?= $list['id']; ?>"><img class="rounded-circle" src="<?= $list['path']; ?>" alt="perfil"></a></td>
                             <td><a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#modal<?= $list['id']; ?>"><?= $list['nome']; ?></a></td>
                             <td><?= $list['email']; ?></td>
                             <td><?= $list['idade']; ?></td>
                             <td><?= $list['modelo']; ?></td>
                             <td><?= $list['cor']; ?></td>
+                            <td><?= $list['viagens']; ?></td>
                             <td><a class="nav-link" href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank"><?= $list['telefone']; ?></a></td>
-                            <td><a href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank" class="btn btn-success" onclick="location.href = 'controller/prestador_controller.php/?addViagem=true'"><i class="bi bi-whatsapp"></i> Chamar</a></td>
+                            <td><a href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank" class="btn btn-success" onclick="location.href = 'controller/prestador_controller.php/?addViagem=true&chave=<?= $list['email']; ?>'"><i class="bi bi-whatsapp"></i> Chamar</a></td>
 
                             <!-- Modal -->
                             <div class="modal fade" id="modal<?= $list['id']; ?>" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
