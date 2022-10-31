@@ -129,6 +129,15 @@ class Prestador extends Upload
         return $list; 
     }
 
+    public function buscarPorEmailJoin($email){
+        $pdo = Database::conexao();
+        $sql = "SELECT * FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem WHERE email = '$email'";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $list;
+    }
+
     public function buscarPorId($id){
         $pdo = Database::conexao();
         $sql = "SELECT * FROM prestador WHERE `id` = '$id'";
@@ -151,7 +160,7 @@ class Prestador extends Upload
         $page = $_GET['page'];
         $start = ($page - 1) * $limit;
         $pdo = Database::conexao();
-        $sql = "SELECT prestador.nome, prestador.email, prestador.idade, prestador.telefone, prestador.cor, prestador.placa, prestador.modelo, arquivos.id, arquivos.path FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem LIMIT $start, $limit";
+        $sql = "SELECT prestador.nome, prestador.email, prestador.idade, prestador.telefone, prestador.viagens, prestador.cor, prestador.placa, prestador.modelo, arquivos.id, arquivos.path FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem LIMIT $start, $limit";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC); 
@@ -172,8 +181,8 @@ class Prestador extends Upload
 
     public function cadastrar()
     {
-        $sql = "INSERT INTO prestador(email, senha, nome, idade, telefone, cor, placa, modelo, chassi, id_imagem) 
-        VALUES(:email, :senha, :nome, :idade, :telefone, :cor, :placa, :modelo, :chassi, :id_imagem)";
+        $sql = "INSERT INTO prestador(email, senha, nome, idade, telefone, viagens, cor, placa, modelo, chassi, id_imagem) 
+        VALUES(:email, :senha, :nome, :idade, :telefone, :viagens, :cor, :placa, :modelo, :chassi, :id_imagem)";
         $pdo = Database::conexao();
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':email', $this->getEmail());
@@ -181,6 +190,7 @@ class Prestador extends Upload
         $stmt->bindValue(':nome', $this->getNome());
         $stmt->bindValue(':idade', $this->getIdade());
         $stmt->bindValue(':telefone', $this->getTelefone());
+        $stmt->bindValue(':viagens', 0);
         $stmt->bindValue(':cor', $this->getCor());
         $stmt->bindValue(':placa', $this->getPlaca());
         $stmt->bindValue(':modelo', $this->getModelo());
@@ -209,19 +219,9 @@ class Prestador extends Upload
         }
     }
 
-    public function editar($id)
+    public function editar($emailOriginal)
     {
-        $sql = "UPDATE prestador SET 
-        email = :email,
-        senha = :senha,
-        nome = :nome,
-        idade = :idade,
-        telefone = :telefone,
-        cor = :cor,
-        placa = :placa,
-        modelo = :modelo,
-        chassi = :chassi,
-        WHERE id = :id";
+        $sql = "UPDATE `prestador` SET `email` = :email, `senha` = :senha, `nome` = :nome, `idade` = :idade, `telefone` = :telefone, `cor` = :cor, `placa` = :placa, `modelo` = :modelo, `chassi` = :chassi WHERE `prestador`.`email` = :email";
         $pdo = Database::conexao();
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':email',$this->getEmail());
@@ -233,7 +233,7 @@ class Prestador extends Upload
         $stmt->bindValue(':placa', $this->getPlaca());
         $stmt->bindValue(':modelo', $this->getModelo());
         $stmt->bindValue(':chassi', $this->getChassi());
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':email', $emailOriginal);
         $stmt->execute();
     }
 

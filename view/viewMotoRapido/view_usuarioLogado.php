@@ -8,7 +8,7 @@
       
             <ul id="menu" class="nav nav-pills">
                 <span class="fs-5 pe-4">Bem-Vindo <?=$_SESSION["usuarioName"]?> </span>  
-                <li class="nav-item"><a href="controller/usuario_controller.php/?sair=true" class="nav-link active" >Sair</a></li>    
+                <li class="nav-item"><a href="controller/prestador_controller.php/?sair=true" class="nav-link active">Sair</a></li>    
             </ul>
         </header>
 
@@ -61,7 +61,7 @@
             <div class="col-12">
                 <h2 class="display-7 text-center fw-bold pb-2">Prestadores de Serviços:</h2>
             </div>
-            <table class="table table-striped">
+            <table class="table table-striped align-middle">
                     <thead>
                         <th>Id</th>
                         <th>Foto de Perfil</th>
@@ -79,14 +79,14 @@
                         ?>
                         <tr>
                             <td><?= $list['id']; ?></td>
-                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal<?= $list['id']; ?>"><img src="<?= $list['path']; ?>" alt="perfil"></a></td>
+                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal<?= $list['id']; ?>"><img class="rounded-circle" src="<?= $list['path']; ?>" alt="perfil"></a></td>
                             <td><a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#modal<?= $list['id']; ?>"><?= $list['nome']; ?></a></td>
                             <td><?= $list['email']; ?></td>
                             <td><?= $list['idade']; ?></td>
                             <td><?= $list['modelo']; ?></td>
                             <td><?= $list['cor']; ?></td>
                             <td><a class="nav-link" href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank"><?= $list['telefone']; ?></a></td>
-                            <td><a href="https://wa.me/5581<?= $list['telefone']; ?>" class="btn btn-success"><i class="bi bi-whatsapp"></i> Chamar</a></td>
+                            <td><a href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank" class="btn btn-success" onclick="location.href = 'controller/prestador_controller.php/?addViagem=true'"><i class="bi bi-whatsapp"></i> Chamar</a></td>
 
                             <!-- Modal -->
                             <div class="modal fade" id="modal<?= $list['id']; ?>" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
@@ -108,7 +108,7 @@
                                                         <li><b>Número:</b> <?= $list['telefone']; ?></li>                                    
                                                     </ul>
 
-                                                    <a href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank" class="w-100 btn btn-lg btn-success"> <i class="bi bi-whatsapp"></i> Chamar</a>
+                                                    <a href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank" class="w-100 btn btn-lg btn-success" onclick="location.href = '?pagina=1&AddViagem'"> <i class="bi bi-whatsapp"></i> Chamar</a>
                                                 </div>
                                             </div>
                                         </div>

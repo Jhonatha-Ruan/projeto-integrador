@@ -25,10 +25,10 @@ class Upload {
 
 
     public function cadastrarArquivo($name, $path){
-        $sql = "INSERT INTO arquivos (nome, path) VALUES(:nome, :path)";
+        $sql = "INSERT INTO arquivos (nome_imagem, path) VALUES(:nome_imagem, :path)";
         $pdo = Database::conexao();
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':nome', $name);
+        $stmt->bindValue(':nome_imagem', $name);
         $stmt->bindValue(':path', $path);
         return $stmt->execute();
     }

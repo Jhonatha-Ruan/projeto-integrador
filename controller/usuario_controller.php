@@ -38,10 +38,9 @@ if($tela == 'cadastroDeUsuario'){
 // Verifica o login do usuário
 if( $tela == 'loginDoUsuario' ){
     $usuarioObj = new Usuario($email, $senha);
-    if( $usuarioObj->verificarLogin() ){
+    if($usuarioObj->verificarLogin()){
         $_SESSION["usuarioLogado"] = true;
         $_SESSION["usuarioName"] = $usuarioObj->getEmail();
-
         header('Location: http://localhost/motorapido/?pagina=1');
     } else {
         header('Location: http://localhost/motorapido/?erro=senhaInválida');

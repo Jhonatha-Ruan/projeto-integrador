@@ -29,9 +29,13 @@ if (!isset($_SESSION["prestadorName"])) {
 if (!isset($_GET["sair"])) {
     $_GET["sair"] = false;
 }
+if (!isset($_GET['addViagem'])) {
+    $_GET['addViagem'] = false;
+}
 if (!isset($_GET["page"])) {
     $_GET["page"] = 1;
 }
+
 
 //localhost/diogo/uec?pagina=3
 var_dump($_SESSION["admLogado"]);
@@ -103,7 +107,7 @@ if($pagina === '1'){
 //     include_once "view/template/rodape.php"; 
 // }
 else{
-    //login
+    //login Main Page
     include_once 'view/template/motoRapido/header.php';
     include_once 'view/viewMotoRapido/view_main-page.php';
     include_once 'view/template/motoRapido/footer.php';

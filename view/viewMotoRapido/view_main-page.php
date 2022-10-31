@@ -67,7 +67,7 @@
         <div class="col-md-6 mt-3">
           <h2 class="mt-5 fs-5">Aqui você tem mais segurança e agilidade</h2>
           <h1 class="display-2 fw-bold">Moto Rápido</h1>
-          <p class="text-muted mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo eligendi itaque ab ipsum libero. Cupiditate, quo labore quibusdam cum atque illum maiores fugiat possimus, reiciendis non quod laudantium, nihil nisi?</p>
+          <p class="text-muted mt-4">Moto rápido é um website que permite os usuários realizarem viagens, entregas e delivery com nossos motociclistas parceiros. Usando nossos serviços você tem mais economia, praticidade e segurança.</p>
           <a href="#entrar" class="btn btn-primary mt-4 w-40 p-3 fw-bold" data-bs-toggle="modal" data-bs-target="#loginModal">Pedir Moto <i class="fa-solid fa-motorcycle ms-1"></i></a>
         </div>
 
@@ -280,17 +280,17 @@
         <div class="col-lg-4 mt-5">
           <img class="shadow border p-4" src="./assets/img/entrega-rapida.png" alt="delivery">
           <h2 class="fw-normal mt-3">Delivery</h2>
-          <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+          <p>Na Moto Rápido nossos prestadores de serviços realiza entregas de compras realizadas pela internet, aplicativos ou telefone diretamente onde o cliente deseja.</p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4 mt-5">
           <img class="shadow border p-4" src="./assets/img/moto.png" alt="moto-taxi">
           <h2 class="fw-normal mt-3">Moto-Táxi</h2>
-          <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p> 
+          <p>Os usuários podem solicitar esse tipo de viagem pelo próprio site da Moto Rápido com rapidez e segurança.</p> 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4 mt-5">
           <img class="shadow border p-4" src="./assets/img/take-away.png" alt="entregas">
           <h2 class="fw-normal mt-3">Entregas</h2>
-          <p>And lastly this, the third column of representative placeholder content.</p>        
+          <p>Nossos prestadores de serviços realiza entregas de qualquer tipo de produtos onde o cliente desejar.</p>        
         </div><!-- /.col-lg-4 -->
       </div>
     </section>
@@ -378,7 +378,7 @@
                   </div>
                 </div> -->
               </ul>
-              <button type="button" class="w-100 btn btn-lg btn-success"> <i class="bi bi-whatsapp"></i> Chamar</button>
+              <button type="button" class="w-100 btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#loginModal"> <i class="bi bi-whatsapp"></i> Chamar</button>
             </div>
           </div>
         </div>
@@ -413,7 +413,7 @@
                 </div> -->
               </ul>
 
-              <button type="button" class="w-100 btn btn-lg btn-success"> <i class="bi bi-whatsapp"></i> Chamar</button>
+              <button type="button" class="w-100 btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#loginModal"> <i class="bi bi-whatsapp"></i> Chamar</button>
             </div>
           </div>
         </div>
@@ -448,7 +448,7 @@
                 </div> -->
               </ul>
 
-              <button type="button" class="w-100 btn btn-lg btn-success"> <i class="bi bi-whatsapp"></i> Chamar</button>
+              <button type="button" class="w-100 btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#loginModal"> <i class="bi bi-whatsapp"></i> Chamar</button>
             </div>
           </div>
         </div>

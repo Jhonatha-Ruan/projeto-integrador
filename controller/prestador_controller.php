@@ -15,6 +15,7 @@ $placa = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['placa']) )? $_
 $modelo = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['modelo']) )? $_POST['modelo'] : null; 
 $chassi = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['chassi']) )? $_POST['chassi'] : null;
 $tela =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['tela']) ) ? $_POST['tela'] : null; 
+$emailOriginal =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['emailOriginal']) ) ? $_POST['emailOriginal'] : null; 
 $imagem =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_FILES['idImagem']) ) ? $_FILES['idImagem'] : null; 
 
 
@@ -41,6 +42,10 @@ if($_GET['sair']){
     header('Location: http://localhost/motorapido/?saiu');
 }
 
+if($_GET['addViagem']){
+    header('Location: http://localhost/motorapido/?pagina=1&DEUCERTO');
+}
+
 // Verifica o Cadastro de Prestador
 if($tela == 'cadastroDePrestador'){
     $prestadorObj = new Prestador($email, $senha, $nome, $idade, $telefone, $cor, $placa, $modelo, $chassi);
@@ -61,6 +66,13 @@ if($tela == 'cadastroDePrestador'){
     }
 }
 
+if($tela == 'updatePrestador') {
+    $prestadorObj = new Prestador($email, $senha, $nome, $idade, $telefone, $cor, $placa, $modelo, $chassi);
+    $prestadorObj->editar($emailOriginal);
+    header('Location: http://localhost/motorapido/?pagina=3&editarSucesso');
+}
+
+
 // Verifica o login do Prestador
 if($tela == 'loginDoPrestador'){
     $prestadorObj = new Prestador($email, $senha, $nome, null, null, null, null, null, null);
@@ -75,7 +87,7 @@ if($tela == 'loginDoPrestador'){
 
 
 
-$uploadObj = new Upload($imagem);
-$listaImagem = $uploadObj->exibirTabela();
+$prestadorObj = new Prestador($email, $senha, $nome, null, null, null, null, null, null);
+$list = $prestadorObj->buscarPorEmailJoin($_SESSION["prestadorName"]);
 
 
