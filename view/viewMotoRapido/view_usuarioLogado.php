@@ -68,9 +68,10 @@
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Idade</th>
-                        <th>Modelo da Moto</th>
-                        <th>Cor da Moto</th>
-                        <th>Viagens Realizadas</th>
+                        <th>Modelo</th>
+                        <th>Cor</th>
+                        <th>Placa</th>
+                        <th>Viagens</th>
                         <th>Número</th>
                         <th>WhatsApp</th>
                     </thead>
@@ -86,6 +87,7 @@
                             <td><?= $list['idade']; ?></td>
                             <td><?= $list['modelo']; ?></td>
                             <td><?= $list['cor']; ?></td>
+                            <td><?= $list['placa']; ?></td>
                             <td><?= $list['viagens']; ?></td>
                             <td><a class="nav-link" href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank"><?= $list['telefone']; ?></a></td>
                             <td><a href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank" class="btn btn-success" onclick="location.href = 'controller/prestador_controller.php/?addViagem=true&chave=<?= $list['email']; ?>'"><i class="bi bi-whatsapp"></i> Chamar</a></td>

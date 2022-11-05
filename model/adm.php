@@ -96,6 +96,7 @@ class Adm
         }
     }
 
+
     public function verificarLogin(){
         //Se email e senha possuem valor
         if( $this->getEmail() && $this->getSenha() ){

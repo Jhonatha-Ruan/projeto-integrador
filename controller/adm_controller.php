@@ -11,11 +11,15 @@ $idUsuario =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['id']) )?
 $BuscaUsuario =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['termo']) )? $_POST['termo'] : null;
 
 
+
 if(!Adm::barrarAdm()){
     header('Location: http://localhost/motorapido/?erro=nãoLogado');
 }
 
 if($_GET['sair']){
+    $_SESSION["admLogado"] = false;
+    $_SESSION["prestadorLogado"] = false;
+    $_SESSION["usuarioLogado"] = false;
     session_destroy();
     header('Location: http://localhost/motorapido/?saiu');
 }
@@ -40,6 +44,8 @@ if( $tela == 'loginDoAdm' ){
     $admObj = new Adm($nome, $email, $senha);
     if( $admObj->verificarLogin() ){
         $_SESSION["admLogado"] = true;
+        $_SESSION["prestadorLogado"] = true;
+        $_SESSION["usuarioLogado"] = true;
         $_SESSION["admName"] = $admObj->getEmail();
 
         header('Location: http://localhost/motorapido/?pagina=2');
@@ -48,14 +54,12 @@ if( $tela == 'loginDoAdm' ){
     }
 }
 
-// Verifica edição do usuário
-if( $tela == 'editarUsuario' ){
-    $usuarioObj = new Usuario($email, $senha);
-    $usuarioObj->editar($idUsuario);
-    header('Location: http://localhost/uec/?pagina=3&alert=1');
+
+if($_GET['page'] == 0){
+    header('Location: http://localhost/motorapido/?pagina=2&page=1');
 }
 
-// Verifica da busca do usuario
-if( $tela == 'buscarUsuario' ){
-    header("Location: http://localhost/uec/?pagina=3&termo=$BuscaUsuario");
-}
+
+
+
+

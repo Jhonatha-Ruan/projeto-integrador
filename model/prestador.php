@@ -155,12 +155,20 @@ class Prestador extends Upload
         return $stmt->fetchAll(PDO::FETCH_ASSOC);  
     }
 
+    public function listarPorNome($nome){
+        $pdo = Database::conexao();
+        $sql = "SELECT * FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem WHERE prestador.nome LIKE '%$nome%' ORDER BY `prestador`.`viagens` DESC";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);  
+    }
+
     public function listarJoin(){
         $limit = 10;
         $page = $_GET['page'];
         $start = ($page - 1) * $limit;
         $pdo = Database::conexao();
-        $sql = "SELECT prestador.nome, prestador.email, prestador.idade, prestador.telefone, prestador.viagens, prestador.cor, prestador.placa, prestador.modelo, arquivos.id, arquivos.path FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem ORDER BY `prestador`.`viagens` DESC LIMIT $start, $limit";
+        $sql = "SELECT prestador.nome, prestador.email, prestador.senha, prestador.idade, prestador.telefone, prestador.viagens, prestador.cor, prestador.placa, prestador.modelo, prestador.chassi, arquivos.id, arquivos.path FROM prestador JOIN arquivos ON arquivos.id = prestador.id_imagem ORDER BY `prestador`.`viagens` DESC LIMIT $start, $limit";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC); 
@@ -253,13 +261,32 @@ class Prestador extends Upload
         $stmt->execute();
     }
 
-    public function deletar($id)
+    public function editarPrestadorAdm($emailOriginal, $viagens)
     {
-        $sql = "DELETE FROM prestador   
-        WHERE id = :id";
+        $sql = "UPDATE `prestador` SET `email` = :email, `senha` = :senha, `nome` = :nome, `idade` = :idade, `telefone` = :telefone, `viagens` = :viagens, `cor` = :cor, `placa` = :placa, `modelo` = :modelo, `chassi` = :chassi WHERE `prestador`.`email` = :email";
         $pdo = Database::conexao();
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':email',$this->getEmail());
+        $stmt->bindValue(':senha', $this->getSenha());
+        $stmt->bindValue(':nome', $this->getNome());
+        $stmt->bindValue(':idade', $this->getIdade());
+        $stmt->bindValue(':telefone', $this->getTelefone());
+        $stmt->bindValue(':viagens', $viagens);
+        $stmt->bindValue(':cor', $this->getCor());
+        $stmt->bindValue(':placa', $this->getPlaca());
+        $stmt->bindValue(':modelo', $this->getModelo());
+        $stmt->bindValue(':chassi', $this->getChassi());
+        $stmt->bindValue(':email', $emailOriginal);
+        $stmt->execute();
+    }
+
+
+    public function remover($emailOriginal)
+    {
+        $sql = "DELETE FROM `prestador` WHERE `prestador`.`email` = :email";
+        $pdo = Database::conexao();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':email', $emailOriginal);
         $stmt->execute();
     }
 

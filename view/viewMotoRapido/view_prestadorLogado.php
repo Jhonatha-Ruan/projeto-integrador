@@ -32,7 +32,6 @@
             </div>
             <table class="table table-striped align-middle">
                     <thead>
-                        <th>Id</th>
                         <th>Foto de Perfil</th>
                         <th>Nome</th>
                         <th>Email</th>
@@ -50,7 +49,6 @@
                         foreach($list as $list):
                         ?>
                         <tr>
-                            <td><?= $list['id']; ?></td>
                             <td><a href="#" data-bs-toggle="modal" data-bs-target="#modal<?= $list['id']; ?>"><img class="rounded-circle" src="<?= $list['path']; ?>" alt="perfil"></a></td>
                             <td><a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#modal<?= $list['id']; ?>"><?= $list['nome']; ?></a></td>
                             <td><?= $list['email']; ?></td>

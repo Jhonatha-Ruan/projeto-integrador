@@ -68,6 +68,29 @@ class Usuario
         return $list; 
     }
 
+    public function listarUsuarios(){
+        $limit = 5;
+        $page = $_GET['pageAdm'];
+        $start = ($page - 1) * $limit;
+        $pdo = Database::conexao();
+        $sql = "SELECT * FROM usuario LIMIT $start, $limit";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        
+    }
+
+    public function countIdUsuarios() {
+        $limit = 5;
+        $pdo = Database::conexao();
+        $sql = "SELECT COUNT(id) AS id FROM usuario";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $usuarioCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $total = $usuarioCount[0]['id'];
+        return ceil($total / $limit);
+    }
+
     public function cadastrar()
     {
         $sql = "INSERT INTO usuario(email, senha) 

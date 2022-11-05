@@ -24,12 +24,12 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li> -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="http://localhost/motorapido/?pagina=2&page=1">
                     <i class="fa-solid fa-motorcycle"></i>
                     <span>Prestadores</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="http://localhost/motorapido/?pagina=5&pageAdm=1">
                     <i class="fa-solid fa-user"></i>
                     <span>Usuarios</span></a>
@@ -120,7 +120,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Admin Prestadores de Serviços</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Admin Usuários</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -214,60 +214,46 @@
                     <!-- Tabela -->
                     <section class="py-5 my-5 text-gray-900">
                         <div class="col-12">
-                            <h2 class="display-7 text-center fw-bold pb-2">Prestadores de Serviços:</h2>
+                            <h2 class="display-7 text-center fw-bold pb-2">Usuários Cadastrados:</h2>
                         </div>
                         <div class="table-responsive">
                             <table class="table align-middle text-gray-900" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <th>Id</th>
-                                    <th>Foto de Perfil</th>
-                                    <th>Nome</th>
                                     <th>Email</th>
-                                    <th>Idade</th>
-                                    <th>Modelo da Moto</th>
-                                    <th>Cor</th>
-                                    <th>Placa</th>
-                                    <th>Chassi</th>
-                                    <th>Viagens</th>
-                                    <th>Número</th>
-                                    <th>Acões</th>
+                                    <th>Senha</th>
+                                    <th>Data</th>
+                                    <th>Ações</th>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach($listaPrestadorAdm as $index => $list):
+                                    foreach($listaUsuariosAdm as $index => $list):
                                     ?>
                                     <tr>
-                                        <td><?= $list['id'] ?></td>
-                                        <td><img class="rounded-circle" width="68px" height="68px" src="<?= $list['path']; ?>" alt="perfil"></a></td>
-                                        <td><?= $list['nome']; ?></td>
+                                        <td><?= $list['id'] ?></td>   
                                         <td><?= $list['email']; ?></td>
-                                        <td><?= $list['idade']; ?></td>
-                                        <td><?= $list['modelo']; ?></td>
-                                        <td><?= $list['cor']; ?></td>
-                                        <td><?= $list['placa']; ?></td>
-                                        <td><?= $list['chassi']; ?></td>
-                                        <td><?= $list['viagens']; ?></td>
-                                        <td><?= $list['telefone']; ?></td>
+                                        <td><?= $list['senha']; ?></td>
+                                        <td><?= date("d-m-Y H:i:s", strtotime($list['data'])) ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-primary p-2" aria-current="page" data-bs-toggle="modal" data-bs-target="#ModalMoto<?= $list['id'] ?>"><i class="fa-solid fa-pen"></i></a>
+                                            <a href="#" class="btn btn-primary p-2" aria-current="page" data-bs-toggle="modal" data-bs-target="#ModalUser<?= $list['id'] ?>"><i class="fa-solid fa-pen"></i></a>
                                             <a href="#" class="btn btn-danger p-2" aria-current="page" data-bs-toggle="modal" data-bs-target="#ModalRemover<?= $list['id'] ?>"><i class="fa-solid fa-trash"></i></a>
                                         </td>
               
 
-                                        <!-- Modal CADASTRO MOTO-->
-                                        <div class="modal fade" id="ModalMoto<?= $list['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content rounded-4 shadow">                                               
+                                        <!-- Modal Atualizar Usuario-->
+                                        <div class="modal fade" id="ModalUser<?= $list['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content rounded-4 shadow">                                                  
                                                     <div class="modal-body p-5">
                                                         <div class="modal-header">
-                                                            <h4 class="fw-bold ">Atualizar Prestador</h4>
+                                                            <h4 class="fw-bold ">Atualizar Usuario</h4>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <form action="controller/prestador_controller.php" enctype="multipart/form-data" method="post">
-                                                            <div class="form-floating mb-3">
+                                                        <form action="controller/usuario_controller.php" enctype="multipart/form-data" method="post">
+                                                            <!-- <div class="form-floating mb-3">
                                                                 <input name="nome" type="text" class="form-control rounded-3" id="floatingNome" value="<?= $list['nome']; ?>" required>
                                                                 <label for="floatingInput">Seu Nome</label>
-                                                            </div>
+                                                            </div> -->
                                                             <div class="form-floating mb-3">
                                                                 <input name="email" type="email" class="form-control rounded-3" id="floatingInput" value="<?= $list['email']; ?>" required>
                                                                 <label for="floatingInput">Email</label>
@@ -276,41 +262,9 @@
                                                                 <input name="senha" type="password" class="form-control rounded-3" id="floatingPassword" required>
                                                                 <label for="floatingPassword">Senha</label>
                                                             </div>
-                                                            <!-- <div id="fileInput" >
-                                                                <input name="idImagem" type="file" id="formFile" required>
-                                                                <label for="formFile" class="form-label">Foto de Perfil</label>
-                                                            </div> -->
-                                                            <div class="form-floating mb-3">
-                                                                <input name="idade" type="text" class="form-control rounded-3" id="floatingIdade" value="<?= $list['idade']; ?>" required>
-                                                                <label for="floatingInput">Sua Idade</label>
-                                                            </div>
-                                                            <div class="form-floating mb-3">
-                                                                <input name="modelo" type="text" class="form-control rounded-3" id="floatingModelo" value="<?= $list['modelo']; ?>" required>
-                                                                <label for="floatingInput">Modelo da Moto</label>
-                                                            </div>
-                                                            <div class="form-floating mb-3">
-                                                                <input name="cor" type="text" class="form-control rounded-3" id="floatingCor" value="<?= $list['cor']; ?>" required>
-                                                                <label for="floatingInput">Cor da Moto</label>
-                                                            </div>
-                                                            <div class="form-floating mb-3">
-                                                                <input name="placa" type="text" class="form-control rounded-3" id="floatingPlaca" value="<?= $list['placa']; ?>" required>
-                                                                <label for="floatingInput">Placa da Moto</label>
-                                                            </div>
-                                                            <div class="form-floating mb-3">
-                                                                <input name="chassi" type="text" class="form-control rounded-3" id="floatingChassi" value="<?= $list['chassi']; ?>" required>
-                                                                <label for="floatingInput">Chassi da Moto</label>
-                                                            </div>
-                                                            <div class="form-floating mb-3">
-                                                                <input name="viagens" type="text" class="form-control rounded-3" id="floatingChassi" value="<?= $list['viagens']; ?>" required>
-                                                                <label for="floatingInput">Viagens</label>
-                                                            </div>
-                                                            <div class="form-floating mb-3">
-                                                                <input name="telefone" type="text" maxlength="9" class="form-control rounded-3" id="floatingIdade" value="<?= $list['telefone']; ?>" required>
-                                                                <label for="floatingInput">Telefone</label>
-                                                            </div>
-                                                            <input name="tela" type="hidden" value="updatePrestadorAdm">
-                                                            <input name="emailOriginal" type="hidden" value="<?= $list['email']; ?>">
 
+                                                            <input name="tela" type="hidden" value="updateUsuarioAdm">
+                                                            <input type="hidden" name="id" value="<?= $list['id']; ?>">
 
                                                             <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Atualizar</button>
                                                         </form>
@@ -319,13 +273,12 @@
                                             </div>
                                         </div>
 
-
-                                        <!-- Modal Remover Prestador-->
+                                        <!-- Modal Remover Usuario-->
                                         <div class="modal fade" id="ModalRemover<?= $list['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content rounded-4 shadow">  
                                                     <div class="modal-header px-3 pt-4">
-                                                        <h4 class="fw-bold ">Remoção de Prestadores</h4>
+                                                        <h4 class="fw-bold ">Remoção de Usuario</h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>       
                                                     <div class="modal-body">
@@ -333,7 +286,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                                        <a href="controller/prestador_controller.php/?removerPrestadorAdm=true&removerEmail=<?= $list['email']; ?>" class="btn btn-danger">Remover</a>
+                                                        <a href="controller/usuario_controller.php/?removerUsuarioAdm=true&idRemoverUsuario=<?= $list['id']; ?>" class="btn btn-danger">Remover</a>
                                                     </div>                                         
                                                     
                                                 </div>
@@ -351,11 +304,11 @@
 
                         <nav class="d-flex justify-content-center">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="http://localhost/motorapido/?pagina=2&page=<?= $_GET['page'] - 1; ?>">Anterior</a></li>
-                                <?php for($i = 1; $i<= $pages; $i++) : ?>
-                                    <li class="page-item"><a class="page-link" href="http://localhost/motorapido/?pagina=2&page=<?= $i; ?>"><?= $i; ?></a></li>   
+                                <li class="page-item"><a class="page-link" href="http://localhost/motorapido/?pagina=5&pageAdm=<?= $_GET['pageAdm'] - 1; ?>">Anterior</a></li>
+                                <?php for($i = 1; $i<= $pagesUsuariosAdm; $i++) : ?>
+                                    <li class="page-item"><a class="page-link" href="http://localhost/motorapido/?pagina=5&pageAdm=<?= $i; ?>"><?= $i; ?></a></li>   
                                 <?php endfor; ?>              
-                                <li class="page-item"><a class="page-link" href="http://localhost/motorapido/?pagina=2&page=<?= $_GET['page'] + 1; ?>">Próximo</a></li>
+                                <li class="page-item"><a class="page-link" href="http://localhost/motorapido/?pagina=5&pageAdm=<?= $_GET['pageAdm'] + 1; ?>">Próximo</a></li>
                             </ul>
                         </nav>
                     </section>

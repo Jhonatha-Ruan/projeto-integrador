@@ -11,21 +11,18 @@ if (!isset($_SESSION["admLogado"])) {
 if (!isset($_SESSION["admName"])) {
     $_SESSION["admName"] = false;
 }
-
 if (!isset($_SESSION["usuarioLogado"])) {
     $_SESSION["usuarioLogado"] = false;
 }
 if (!isset($_SESSION["usuarioName"])) {
     $_SESSION["usuarioName"] = false;
 }
-
 if (!isset($_SESSION["prestadorLogado"])) {
     $_SESSION["prestadorLogado"] = false;
 }
 if (!isset($_SESSION["prestadorName"])) {
     $_SESSION["prestadorName"] = false;
 }
-
 if (!isset($_GET["sair"])) {
     $_GET["sair"] = false;
 }
@@ -34,6 +31,15 @@ if (!isset($_GET['addViagem'])) {
 }
 if (!isset($_GET["page"])) {
     $_GET["page"] = 1;
+}
+if (!isset($_GET["pageAdm"])) {
+    $_GET["pageAdm"] = 1;
+}
+if (!isset($_GET["removerPrestadorAdm"])) {
+    $_GET["removerPrestadorAdm"] = false;
+}
+if (!isset($_GET["removerUsuarioAdm"])) {
+    $_GET["removerUsuarioAdm"] = false;
 }
 
 
@@ -52,6 +58,7 @@ $id = ($_SERVER["REQUEST_METHOD"] == "GET" && !empty( $_GET['id']) ) ? $_GET['id
 $alert = ($_SERVER["REQUEST_METHOD"] == "GET" && !empty( $_GET['alert']) ) ? $_GET['alert']: 0;
 $termoBusca = ($_SERVER["REQUEST_METHOD"] == "GET" && !empty( $_GET['termo']) ) ? $_GET['termo']: 0;
 
+
 if($pagina === '1'){
     // Usuario Logado
     include_once 'model/conexao.php';
@@ -67,7 +74,11 @@ if($pagina === '1'){
     //ADM Logado
     include_once 'model/conexao.php';
     include_once 'model/adm.php';
+    include_once 'model/prestador.php';
+    include_once 'model/usuario.php';
     include_once 'controller/adm_controller.php';
+    include_once 'controller/prestador_controller.php';
+    include_once 'controller/usuario_controller.php';
     include_once 'view/template/adm/header.php';
     include_once 'view/viewAdm/view_admLogado.php';
     include_once 'view/template/adm/footer.php';
@@ -90,14 +101,21 @@ if($pagina === '1'){
     include_once 'view/viewAdm/view_loginAdm.php';
     include_once 'view/template/adm/footer.php';
     
-} 
-// else if($pagina === '5'){
-//     //lista de deletar
-//     include_once 'model/conexao.php';
-//     include_once 'model/usuario.php';
-//     include_once 'controller/usuario_controller.php';
+}else if($pagina === '5'){
+    //ADM Usuarios
+    include_once 'model/conexao.php';
+    include_once 'model/adm.php';
+    include_once 'model/prestador.php';
+    include_once 'model/usuario.php';
+    include_once 'controller/adm_controller.php';
+    include_once 'controller/prestador_controller.php';
+    include_once 'controller/usuario_controller.php';
+    include_once 'view/template/adm/header.php';
+    include_once 'view/viewAdm/view_admUsuario.php';
+    include_once 'view/template/adm/footer.php';
    
-// } else if($pagina === '6'){
+} 
+// else if($pagina === '6'){
 //     //lista de buscar
 //     include_once 'model/conexao.php';
 //     include_once 'model/usuario.php';
