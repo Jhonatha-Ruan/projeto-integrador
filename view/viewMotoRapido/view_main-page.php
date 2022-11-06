@@ -353,30 +353,12 @@
               <h5 class="my-0 fw-normal"> <i class="bi bi-trophy-fill"></i> Primeiro Lugar</h5>
             </div>
             <div class="card-body">
-
               <div class="p-4 text-center w-100">
-                <img src="https://thumbs.dreamstime.com/b/retrato-delantero-del-hombre-latino-hermoso-contra-el-fondo-blanco-inicial-cercano-133383508.jpg" class="rounded-circle"  width="130" height="100" alt="Bootstrap 5 Extended Avatar">
+                <img src="<?= $listaPrestador[0]['path'] ?>" class="rounded-circle"  width="105" height="100" alt="Bootstrap 5 Extended Avatar">
               </div>
-
-              <h3 class="card-title pricing-card-title">Victor Motos</h3>
+              <h3 class="card-title pricing-card-title"><?= $listaPrestador[0]['nome'] ?></h3>
               <ul class="list-unstyled mt-3 mb-4">
-                <li>Corridas Realizada: 25</li>
-                <!-- <li>Pontualidade: Bom</li> -->
-                <!-- <div class="container-rating">
-                  <div class="review-rating">
-                    <div class="left-review"> -->
-                      <!-- <div class="review-title">Avaliação 3.5</div>
-                      <div class="review-star">
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star-half-o"></span>
-                        <span class="fa fa-star-o"></span>
-                      </div> -->
-                      <!-- <div class="review-people"><i class="fa fa-user"></i> 8,445,600 total</div> -->
-                    <!-- </div>
-                  </div>
-                </div> -->
+                <li>Corridas Realizada: <?= $listaPrestador[0]['viagens'] ?></li>            
               </ul>
               <button type="button" class="w-100 btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#loginModal"> <i class="bi bi-whatsapp"></i> Chamar</button>
             </div>
@@ -390,27 +372,11 @@
             </div>
             <div class="card-body">
               <div class="p-4 text-center w-100">
-                <img src="https://thumbs.dreamstime.com/b/hombre-con-barba-y-su%C3%A9ter-blanco-casual-joven-apuesto-barbudo-posa-en-estudio-sobre-fondo-164205623.jpg" class="rounded-circle"  width="130" height="100" alt="Bootstrap 5 Extended Avatar">
+                <img src="<?= $listaPrestador[1]['path'] ?>" class="rounded-circle"  width="105" height="100" alt="Bootstrap 5 Extended Avatar">
               </div>
-              <h3 class="card-title pricing-card-title">Thiago Motos</h3>
+              <h3 class="card-title pricing-card-title"><?= $listaPrestador[1]['nome'] ?></h3>
               <ul class="list-unstyled mt-3 mb-4">
-                <li>Corridas Realizada: 19</li>
-                <!-- <li>Pontualidade: Bom</li>
-                <div class="container-rating">
-                  <div class="review-rating">
-                    <div class="left-review">
-                      <div class="review-title">Avaliação 3.5</div>
-                      <div class="review-star">
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star-half-o"></span>
-                        <span class="fa fa-star-o"></span>
-                      </div>
-                      <div class="review-people"><i class="fa fa-user"></i> 8,445,600 total</div>
-                    </div>
-                  </div>
-                </div> -->
+                <li>Corridas Realizada: <?= $listaPrestador[1]['viagens'] ?></li>
               </ul>
 
               <button type="button" class="w-100 btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#loginModal"> <i class="bi bi-whatsapp"></i> Chamar</button>
@@ -425,34 +391,17 @@
             </div>
             <div class="card-body">
               <div class="p-4 text-center w-100">
-                <img src="https://thumbs.dreamstime.com/b/retrato-de-hombre-mirando-la-c%C3%A1mara-sobre-el-fondo-blanco-158750254.jpg" class="rounded-circle"  width="105" height="100" alt="Bootstrap 5 Extended Avatar">
+                <img src="<?= $listaPrestador[2]['path'] ?>" class="rounded-circle"  width="105" height="100" alt="Bootstrap 5 Extended Avatar">
               </div>
-              <h3 class="card-title pricing-card-title">Taciara Motos</h3>
+              <h3 class="card-title pricing-card-title"><?= $listaPrestador[2]['nome'] ?></h3>
               <ul class="list-unstyled mt-3 mb-4">
-                <li>Corridas Realizada: 10</li>
-                <!-- <li>Pontualidade: Bom</li>
-                <div class="container-rating">
-                  <div class="review-rating">
-                    <div class="left-review">
-                      <div class="review-title">Avaliação 3.5</div>
-                      <div class="review-star">
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star-half-o"></span>
-                        <span class="fa fa-star-o"></span>
-                      </div>
-                      <div class="review-people"><i class="fa fa-user"></i> 8,445,600 total</div>
-                    </div>
-                  </div>
-                </div> -->
+                <li>Corridas Realizada: <?= $listaPrestador[2]['viagens'] ?></li>
               </ul>
 
               <button type="button" class="w-100 btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#loginModal"> <i class="bi bi-whatsapp"></i> Chamar</button>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 

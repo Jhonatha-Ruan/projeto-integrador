@@ -61,6 +61,13 @@
                             <td><a class="nav-link" href="https://wa.me/5581<?= $list['telefone']; ?>" target="_blank"><?= $list['telefone']; ?></a></td>
                             <td><a href="#" class="btn btn-primary p-2" aria-current="page" data-bs-toggle="modal" data-bs-target="#updateModalMoto"><i class="bi bi-pencil"></i></a></td>
 
+                            <div class="my-4">
+                                <h6>Falta apenas <?= 100 - $list['viagens']; ?> viagens para você conseguir desconto em nossos parceiros.</h6>
+                                <div class="progress col-12">                              
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progress-bar" aria-label="Example with label" style="width: <?= $list['viagens']; ?>%; " aria-valuenow="<?= $list['viagens']; ?>" aria-valuemin="0" aria-valuemax="100"><?= $list['viagens']; ?>%</div>
+                                </div>
+                            </div>
+                            
                             <!-- Modal -->
                             <div class="modal fade" id="modal<?= $list['id']; ?>" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
                                 <div class="modal-dialog">

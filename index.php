@@ -53,12 +53,12 @@ if (!isset($_GET["removerUsuarioAdm"])) {
 
 
 //localhost/diogo/uec?pagina=3
-var_dump($_SESSION["admLogado"]);
-var_dump($_SESSION["admName"]);
-var_dump($_SESSION["usuarioLogado"]);
-var_dump($_SESSION["usuarioName"]);
-var_dump($_SESSION["prestadorLogado"]);
-var_dump($_SESSION["prestadorName"]);
+// var_dump($_SESSION["admLogado"]);
+// var_dump($_SESSION["admName"]);
+// var_dump($_SESSION["usuarioLogado"]);
+// var_dump($_SESSION["usuarioName"]);
+// var_dump($_SESSION["prestadorLogado"]);
+// var_dump($_SESSION["prestadorName"]);
 
 
 //Operador ternario
@@ -135,6 +135,11 @@ if($pagina === '1'){
 // }
 else{
     //login Main Page
+    include_once 'model/conexao.php';
+    include_once 'model/usuario.php';
+    include_once 'model/upload.php';
+    include_once 'model/prestador.php';
+    include_once 'controller/main_controller.php';
     include_once 'view/template/motoRapido/header.php';
     include_once 'view/viewMotoRapido/view_main-page.php';
     include_once 'view/template/motoRapido/footer.php';
