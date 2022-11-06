@@ -10,7 +10,8 @@ $tela =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['tela']) ) ? $
 $idUsuario =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['id']) )? $_POST['id'] : null;
 $BuscaUsuario =  ( $_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['termo']) )? $_POST['termo'] : null;
 $idRemoverUsuario = ($_SERVER["REQUEST_METHOD"] == "GET" && !empty( $_GET['idRemoverUsuario']) ) ? $_GET['idRemoverUsuario']: null;
-
+$termo = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty( $_POST['search']) ) ? $_POST['search']: null;
+$nomeBusca = ($_SERVER["REQUEST_METHOD"] == "GET" && !empty( $_GET['search']) ) ? $_GET['search']: null;
 
 if(!Usuario::barrarUsuario()){
     header('Location: http://localhost/motorapido/?erro=nãoLogado');
@@ -56,8 +57,12 @@ if($tela == 'updateUsuarioAdm'){
 }
 
 // Verifica da busca do usuario
-if( $tela == 'buscarUsuario' ){
-    header("Location: http://localhost/uec/?pagina=3&termo=$BuscaUsuario");
+if($tela == 'buscarUsuarioAdm') {
+    header("Location: http://localhost/motorapido/?pagina=5&page=1&search=$termo");
+}
+
+if($tela == 'buscarPrestador') {
+    header("Location: http://localhost/motorapido/?pagina=1&page=1&search=$termo");
 }
 
 //Remover Usuários
@@ -67,7 +72,7 @@ if($_GET['removerUsuarioAdm']) {
     header('Location: http://localhost/motorapido/?pagina=5&pageAdm=1&UsuarioRemovido');
 }
 
-if($_GET['page'] == 0){
+if($_GET['page'] == 0 and $_GET['pagina'] == '1'){
     header('Location: http://localhost/motorapido/?pagina=1&page=1');
 }
 
@@ -75,16 +80,23 @@ if($_GET['pageAdm'] == 0 and $_GET['pagina'] == '5'){
     header('Location: http://localhost/motorapido/?pagina=5&pageAdm=1');
 }
 
-$prestadorObj = new Prestador(null, null, null, null, null, null, null, null, null);
-$listaPrestador = $prestadorObj->listarJoin();
-$pages = $prestadorObj->countId();
+if(isset($_GET['search']) and $_GET['pagina'] == '1') {
+    $prestadorObj = new Prestador(null, null, null, null, null, null, null, null, null);
+    $listaPrestador = $prestadorObj->listarPorNome($nomeBusca);
+} else {
+    $prestadorObj = new Prestador(null, null, null, null, null, null, null, null, null);
+    $listaPrestador = $prestadorObj->listarJoin();
+    $pages = $prestadorObj->countId();
+}
 
 
-
-//ADM COLOCAR A LISTA AQUIIIIIIII
-$usuarioObj = new Usuario(null, null);
-$listaUsuariosAdm = $usuarioObj->listarUsuarios();
-$pagesUsuariosAdm = $usuarioObj->countIdUsuarios();
-
+if(isset($_GET['search']) and $_GET['pagina'] == '5') {
+    $usuarioObj = new Usuario($email, $senha);
+    $listaUsuariosAdm = $usuarioObj->buscar($nomeBusca);
+} else {
+    $usuarioObj = new Usuario(null, null);
+    $listaUsuariosAdm = $usuarioObj->listarUsuarios();
+    $pagesUsuariosAdm = $usuarioObj->countIdUsuarios();
+}
 
 

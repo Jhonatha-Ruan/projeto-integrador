@@ -63,10 +63,10 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form action="controller/prestador_controller.php" method="post" id="formSearch" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form action="controller/usuario_controller.php" method="post" id="formSearch" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Digite um nome" name="search">
-                            <input name="tela" type="hidden" value="buscarPrestadorAdm">
+                            <input name="tela" type="hidden" value="buscarUsuarioAdm">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit" form="formSearch"><i class="fas fa-search fa-sm"></i></button>
                             </div>

@@ -34,11 +34,10 @@ class Usuario
 
     public function buscar($email){
         $pdo = Database::conexao();
-        $sql = "SELECT * FROM usuario WHERE `email` LIKE '$email%' ";
+        $sql = "SELECT * FROM usuario WHERE `email` LIKE '%$email%' ";
         $stmt = $pdo->prepare($sql);
-        $list = $stmt->execute();
-        $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $list;
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);  
     }
 
     public function buscarPorEmail($email){

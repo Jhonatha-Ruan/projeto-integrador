@@ -35,6 +35,15 @@ if (!isset($_GET["page"])) {
 if (!isset($_GET["pageAdm"])) {
     $_GET["pageAdm"] = 1;
 }
+if (!isset($pagesUsuariosAdm)) {
+    $pagesUsuariosAdm = 1;
+}
+if (!isset($pages)) {
+    $pages = 1;
+}
+if (!isset($_GET["pageAdm"])) {
+    $_GET["pageAdm"] = 1;
+}
 if (!isset($_GET["removerPrestadorAdm"])) {
     $_GET["removerPrestadorAdm"] = false;
 }

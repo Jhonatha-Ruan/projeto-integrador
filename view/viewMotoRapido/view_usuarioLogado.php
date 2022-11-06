@@ -54,13 +54,23 @@
                 </div>
             </div>
         </section>
-
-
+       
         <!-- Tabela -->
         <section class="py-5 my-5">
             <div class="col-12">
                 <h2 class="display-7 text-center fw-bold pb-2">Prestadores de Serviços:</h2>
             </div>
+            <!-- Topbar Search -->
+            <form action="controller/usuario_controller.php" method="post" id="formSearch" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search col-3">
+                <div class="input-group mb-5">
+                    <input type="text" class="form-control bg-light border-1 small" placeholder="Digite um nome" name="search">
+                    <input name="tela" type="hidden" value="buscarPrestador">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" form="formSearch"><i class="fas fa-search p-1"></i></button>
+                    </div>
+                </div>
+            </form>
+            
             <table class="table table-striped align-middle">
                     <thead>
                         <th>Posição</th>
