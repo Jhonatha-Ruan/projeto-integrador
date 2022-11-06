@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Out-2022 às 21:46
+-- Tempo de geração: 06-Nov-2022 às 19:32
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -24,12 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `adm`
+--
+
+CREATE TABLE `adm` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm`
+--
+
+INSERT INTO `adm` (`id`, `nome`, `email`, `senha`) VALUES
+(1, 'jhonatha', 'jhonatha@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `arquivos`
 --
 
 CREATE TABLE `arquivos` (
   `id` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
+  `nome_imagem` varchar(100) NOT NULL,
   `path` varchar(100) NOT NULL,
   `data_upload` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -38,9 +58,11 @@ CREATE TABLE `arquivos` (
 -- Extraindo dados da tabela `arquivos`
 --
 
-INSERT INTO `arquivos` (`id`, `nome`, `path`, `data_upload`) VALUES
+INSERT INTO `arquivos` (`id`, `nome_imagem`, `path`, `data_upload`) VALUES
 (44, 'elon-musk.jpg', 'assets/arquivos/63477bab947bb.jpg', '2022-10-12 23:44:59'),
-(45, 'mark-zuckerberg.jpg', 'assets/arquivos/63477bfcbd480.jpg', '2022-10-12 23:46:20');
+(45, 'mark-zuckerberg.jpg', 'assets/arquivos/63477bfcbd480.jpg', '2022-10-12 23:46:20'),
+(48, 'bill-gates.jpg', 'assets/arquivos/635e043870984.jpg', '2022-10-30 01:57:28'),
+(49, 'jorge.jpg', 'assets/arquivos/635f2e40b6861.jpg', '2022-10-30 23:09:04');
 
 -- --------------------------------------------------------
 
@@ -93,6 +115,7 @@ CREATE TABLE `prestador` (
   `nome` varchar(100) NOT NULL,
   `idade` int(11) NOT NULL,
   `telefone` int(9) NOT NULL,
+  `viagens` varchar(100) NOT NULL,
   `cor` varchar(100) NOT NULL,
   `placa` varchar(100) NOT NULL,
   `modelo` varchar(100) NOT NULL,
@@ -105,9 +128,11 @@ CREATE TABLE `prestador` (
 -- Extraindo dados da tabela `prestador`
 --
 
-INSERT INTO `prestador` (`id`, `email`, `senha`, `nome`, `idade`, `telefone`, `cor`, `placa`, `modelo`, `chassi`, `data`, `id_imagem`) VALUES
-(1, 'jhonatha@gmail', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'jhonatha', 20, 981562343, 'preto', 'JUE7823', 'XJ6', '23334GDGFEFEF', '2022-10-12 18:22:41', 44),
-(2, 'adm@teste.com.br', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'adm', 20, 981556732, 'preto', 'JDS1230', 'XJ6', 'SHDJHHJ3434', '2022-10-12 18:22:41', 45);
+INSERT INTO `prestador` (`id`, `email`, `senha`, `nome`, `idade`, `telefone`, `viagens`, `cor`, `placa`, `modelo`, `chassi`, `data`, `id_imagem`) VALUES
+(1, 'jhonatha@gmail', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Elon Musk', 40, 981562343, '5', 'Preto', 'JUE7824', 'XJ6', '23334GDGFEFEF', '2022-10-12 18:22:41', 44),
+(2, 'adm@teste.com.br', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'adm', 20, 981556732, '3', 'preto', 'JDS1230', 'XJ6', 'SHDJHHJ3434', '2022-10-12 18:22:41', 45),
+(27, 'billgates@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Bill Gates', 67, 956238912, '1', 'azul', 'VAC2367', 'honda', 'HSD3542JH45', '2022-10-30 01:57:28', 48),
+(28, 'jorge@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Jorge', 20, 945655665, '0', 'Preto', 'VIC8273', 'Honda', 'K2LDL5LFK56J', '2022-10-30 23:09:04', 49);
 
 -- --------------------------------------------------------
 
@@ -142,6 +167,12 @@ INSERT INTO `usuario` (`id`, `email`, `senha`, `data`) VALUES
 --
 
 --
+-- Índices para tabela `adm`
+--
+ALTER TABLE `adm`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `arquivos`
 --
 ALTER TABLE `arquivos`
@@ -171,10 +202,16 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `adm`
+--
+ALTER TABLE `adm`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `arquivos`
 --
 ALTER TABLE `arquivos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de tabela `lutador`
@@ -186,7 +223,7 @@ ALTER TABLE `lutador`
 -- AUTO_INCREMENT de tabela `prestador`
 --
 ALTER TABLE `prestador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
