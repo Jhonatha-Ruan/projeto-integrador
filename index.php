@@ -2,7 +2,7 @@
 //Iniciando a session
 @session_start();
 //Constante
-define("ENDERECO-SITE","http://localhost/uec/");
+define("ENDERECO-SITE","http://localhost/motorapido/");
 
 //Por padrão todo usuario inicia deslogado
 if (!isset($_SESSION["admLogado"])) {
