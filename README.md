@@ -1,2 +1,2 @@
 # projeto-integrador
-Em produção...
+Finalizado
